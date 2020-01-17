@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cacheType: 6
-  lastUpdatedAtString: 2020-01-17T16:40:35.831+09:00
+  lastUpdatedAtString: 2020-01-17T16:43:25.994+09:00
   initializedAtString: 2020-01-17T16:34:02.668+09:00
   entries:
   - path: .gitignore
@@ -34,21 +34,9 @@ MonoBehaviour:
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
-  - path: FPS\Library\CrashedAssetImports.txt
-    fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Library\CrashedAssetImports.txt
-    projectPath: Library\CrashedAssetImports.txt
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
   - path: FPS\Library\gfu\cache\branches.yaml
     fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Library\gfu\cache\branches.yaml
     projectPath: Library\gfu\cache\branches.yaml
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: FPS\Library\gfu\cache\gitlocks.yaml
-    fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Library\gfu\cache\gitlocks.yaml
-    projectPath: Library\gfu\cache\gitlocks.yaml
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
@@ -85,6 +73,12 @@ MonoBehaviour:
   - path: FPS\Library\ShaderCache\2\2342a991db8d7299ab6f2879d7e6ff92.bin
     fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Library\ShaderCache\2\2342a991db8d7299ab6f2879d7e6ff92.bin
     projectPath: Library\ShaderCache\2\2342a991db8d7299ab6f2879d7e6ff92.bin
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: FPS\Library\ShaderCache\3\3847d6b094b384a406ac872a5d2f596f.bin
+    fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Library\ShaderCache\3\3847d6b094b384a406ac872a5d2f596f.bin
+    projectPath: Library\ShaderCache\3\3847d6b094b384a406ac872a5d2f596f.bin
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
@@ -157,6 +151,12 @@ MonoBehaviour:
   - path: FPS\Library\ShaderCache\c\ce0f1933661a6b9eb7ff0d417e0f5757.bin
     fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Library\ShaderCache\c\ce0f1933661a6b9eb7ff0d417e0f5757.bin
     projectPath: Library\ShaderCache\c\ce0f1933661a6b9eb7ff0d417e0f5757.bin
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: FPS\Library\ShaderCache\c\ce48ab19e2aef98732602112199f3661.bin
+    fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Library\ShaderCache\c\ce48ab19e2aef98732602112199f3661.bin
+    projectPath: Library\ShaderCache\c\ce48ab19e2aef98732602112199f3661.bin
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
