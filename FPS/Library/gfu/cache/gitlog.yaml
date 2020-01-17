@@ -13,9 +13,183 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cacheType: 3
-  lastUpdatedAtString: 2020-01-17T16:46:00.057+09:00
+  lastUpdatedAtString: 2020-01-17T16:58:28.770+09:00
   initializedAtString: 2020-01-17T16:34:02.659+09:00
   log:
+  - commitID: 6e786233baab480ad62a9ee16a360ebf008a3c91
+    mergeA: 
+    mergeB: 
+    authorName: toto-lacky
+    authorEmail: totolacky@kaist.ac.kr
+    commitEmail: totolacky@kaist.ac.kr
+    commitName: toto-lacky
+    summary: 'feat: Add git settings'
+    description: 
+    timeString: 2020-01-17T16:57:58.000+09:00
+    commitTimeString: 2020-01-17T16:57:58.000+09:00
+    changes:
+    - path: .gitattributes
+      fullPath: C:\Users\q\Documents\GitHub\FPS\.gitattributes
+      projectPath: ..\.gitattributes
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: .gitignore
+      fullPath: C:\Users\q\Documents\GitHub\FPS\.gitignore
+      projectPath: ..\.gitignore
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: FPS\Assets\Scenes\SampleScene.unity
+      fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Assets\Scenes\SampleScene.unity
+      projectPath: Assets\Scenes\SampleScene.unity
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+    - path: FPS\Library\InspectorExpandedItems.asset
+      fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Library\InspectorExpandedItems.asset
+      projectPath: Library\InspectorExpandedItems.asset
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+    - path: FPS\Library\ShaderCache\1\1ee8cd1a5a2bdaf3432ce92003b42983.bin
+      fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Library\ShaderCache\1\1ee8cd1a5a2bdaf3432ce92003b42983.bin
+      projectPath: Library\ShaderCache\1\1ee8cd1a5a2bdaf3432ce92003b42983.bin
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: FPS\Library\ShaderCache\2\2342a991db8d7299ab6f2879d7e6ff92.bin
+      fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Library\ShaderCache\2\2342a991db8d7299ab6f2879d7e6ff92.bin
+      projectPath: Library\ShaderCache\2\2342a991db8d7299ab6f2879d7e6ff92.bin
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: FPS\Library\ShaderCache\3\3847d6b094b384a406ac872a5d2f596f.bin
+      fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Library\ShaderCache\3\3847d6b094b384a406ac872a5d2f596f.bin
+      projectPath: Library\ShaderCache\3\3847d6b094b384a406ac872a5d2f596f.bin
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: FPS\Library\ShaderCache\3\384ec7e2ddfe01f6107ff9b187189fad.bin
+      fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Library\ShaderCache\3\384ec7e2ddfe01f6107ff9b187189fad.bin
+      projectPath: Library\ShaderCache\3\384ec7e2ddfe01f6107ff9b187189fad.bin
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: FPS\Library\ShaderCache\3\39a6a28d980d3ca42248ec13046c89b9.bin
+      fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Library\ShaderCache\3\39a6a28d980d3ca42248ec13046c89b9.bin
+      projectPath: Library\ShaderCache\3\39a6a28d980d3ca42248ec13046c89b9.bin
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: FPS\Library\ShaderCache\5\56ea302b005d117f635800dd05388543.bin
+      fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Library\ShaderCache\5\56ea302b005d117f635800dd05388543.bin
+      projectPath: Library\ShaderCache\5\56ea302b005d117f635800dd05388543.bin
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: FPS\Library\ShaderCache\6\6b338927cb898693b4ecd44cf1319eea.bin
+      fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Library\ShaderCache\6\6b338927cb898693b4ecd44cf1319eea.bin
+      projectPath: Library\ShaderCache\6\6b338927cb898693b4ecd44cf1319eea.bin
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: FPS\Library\ShaderCache\7\7582f779a33383eb9314499ff7e0b739.bin
+      fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Library\ShaderCache\7\7582f779a33383eb9314499ff7e0b739.bin
+      projectPath: Library\ShaderCache\7\7582f779a33383eb9314499ff7e0b739.bin
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: FPS\Library\ShaderCache\b\b012a75e540df3a5283c5de11c9f4b14.bin
+      fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Library\ShaderCache\b\b012a75e540df3a5283c5de11c9f4b14.bin
+      projectPath: Library\ShaderCache\b\b012a75e540df3a5283c5de11c9f4b14.bin
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: FPS\Library\ShaderCache\b\b2c9c2efa4c6098177bd7908744c16f7.bin
+      fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Library\ShaderCache\b\b2c9c2efa4c6098177bd7908744c16f7.bin
+      projectPath: Library\ShaderCache\b\b2c9c2efa4c6098177bd7908744c16f7.bin
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: FPS\Library\ShaderCache\b\b324ed9725d02a9015c85ca2cf97a3b3.bin
+      fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Library\ShaderCache\b\b324ed9725d02a9015c85ca2cf97a3b3.bin
+      projectPath: Library\ShaderCache\b\b324ed9725d02a9015c85ca2cf97a3b3.bin
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: FPS\Library\ShaderCache\b\b3369ad922d9216f52759f1a35e869c9.bin
+      fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Library\ShaderCache\b\b3369ad922d9216f52759f1a35e869c9.bin
+      projectPath: Library\ShaderCache\b\b3369ad922d9216f52759f1a35e869c9.bin
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: FPS\Library\ShaderCache\b\be5b6c117cb9e32d8b7eef6bb72497dd.bin
+      fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Library\ShaderCache\b\be5b6c117cb9e32d8b7eef6bb72497dd.bin
+      projectPath: Library\ShaderCache\b\be5b6c117cb9e32d8b7eef6bb72497dd.bin
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: FPS\Library\ShaderCache\c\c7f628d8937e958ecd63b87108c92a0e.bin
+      fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Library\ShaderCache\c\c7f628d8937e958ecd63b87108c92a0e.bin
+      projectPath: Library\ShaderCache\c\c7f628d8937e958ecd63b87108c92a0e.bin
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: FPS\Library\ShaderCache\c\ce0f1933661a6b9eb7ff0d417e0f5757.bin
+      fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Library\ShaderCache\c\ce0f1933661a6b9eb7ff0d417e0f5757.bin
+      projectPath: Library\ShaderCache\c\ce0f1933661a6b9eb7ff0d417e0f5757.bin
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: FPS\Library\ShaderCache\c\ce48ab19e2aef98732602112199f3661.bin
+      fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Library\ShaderCache\c\ce48ab19e2aef98732602112199f3661.bin
+      projectPath: Library\ShaderCache\c\ce48ab19e2aef98732602112199f3661.bin
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: FPS\Library\assetDatabase3
+      fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Library\assetDatabase3
+      projectPath: Library\assetDatabase3
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+    - path: FPS\Library\gfu\cache\branches.yaml
+      fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Library\gfu\cache\branches.yaml
+      projectPath: Library\gfu\cache\branches.yaml
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+    - path: FPS\Library\gfu\cache\gitlog.yaml
+      fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Library\gfu\cache\gitlog.yaml
+      projectPath: Library\gfu\cache\gitlog.yaml
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+    - path: FPS\Library\gfu\cache\gitstatusentries.yaml
+      fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Library\gfu\cache\gitstatusentries.yaml
+      projectPath: Library\gfu\cache\gitstatusentries.yaml
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+    - path: FPS\Library\gfu\cache\gittrackingstatus.yaml
+      fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Library\gfu\cache\gittrackingstatus.yaml
+      projectPath: Library\gfu\cache\gittrackingstatus.yaml
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+    - path: FPS\Library\gfu\cache\repoinfo.yaml
+      fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Library\gfu\cache\repoinfo.yaml
+      projectPath: Library\gfu\cache\repoinfo.yaml
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+    - path: FPS\Library\shadercompiler-UnityShaderCompiler.exe0.log
+      fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Library\shadercompiler-UnityShaderCompiler.exe0.log
+      projectPath: Library\shadercompiler-UnityShaderCompiler.exe0.log
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
   - commitID: 3a257e2251e36188c3b76a1cf3e19fc1841223f1
     mergeA: 
     mergeB: 
