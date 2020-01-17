@@ -17,7 +17,6 @@ public class PlayerMove : MonoBehaviour{
     private float mX = 0f; // Mouse Y.
 
     // Player move variables.
-
     [SerializeField]
     private float walkSpeed; // Walk (normal movement) speed, set in editor.
     [SerializeField]
@@ -33,17 +32,54 @@ public class PlayerMove : MonoBehaviour{
     [SerializeField]
     private GameObject playerCamera; // Player cam, set in editor.
 
+    protected Joystick joystick;
+    protected joybutton joybutton;
+
+    protected bool attack;
+    
+    Animator anim;
+
     private void Start()
     {
         cc = GetComponent<CharacterController>();
+        anim = GetComponent<Animator>();
+        joystick = FindObjectOfType<Joystick>();
+        joybutton = FindObjectOfType<joybutton>();
         currentSpeed = walkSpeed;
+    }
+
+    private void Update()
+    {
+        // Set animation
+        if (joystick.pressed)
+        {
+            anim.SetBool("isWalking", true);
+            anim.SetBool("isIdle", false);
+        }
+        else
+        {
+            anim.SetBool("isWalking", false);
+            anim.SetBool("isIdle", true);
+        }
+        if (!attack && joybutton.pressed)
+        {
+            attack = true;
+            anim.ResetTrigger("attack");
+            anim.SetTrigger("attack");
+            //attack();
+        }
+
+        if (attack && !joybutton.pressed)
+        {
+            attack = false;
+        }
     }
 
     private void LateUpdate()
     {
         // Get mouse axis.
-        mX += Input.GetAxis("Mouse X") * rotSpeedX * (Time.deltaTime * rotDamp);
-        mY += -Input.GetAxis("Mouse Y") * rotSpeedY * (Time.deltaTime * rotDamp);
+        //mX += Input.GetAxis("Mouse X") * rotSpeedX * (Time.deltaTime * rotDamp);
+        //mY += -Input.GetAxis("Mouse Y") * rotSpeedY * (Time.deltaTime * rotDamp);
 
         // Clamp Y so player can't 'flip'.
         mY = Mathf.Clamp(mY, -80, 80);
@@ -55,8 +91,10 @@ public class PlayerMove : MonoBehaviour{
         transform.eulerAngles = new Vector3(0f, mX, 0f);
 
         // Get Hor and Ver input.
-        float hor = Input.GetAxis("Horizontal");
-        float ver = Input.GetAxis("Vertical");
+        //float hor = Input.GetAxis("Horizontal");
+        //float ver = Input.GetAxis("Vertical");
+        float hor = joystick.Horizontal;
+        float ver = joystick.Vertical;
 
         // Set speed to walk speed.
         currentSpeed = walkSpeed;
@@ -65,7 +103,7 @@ public class PlayerMove : MonoBehaviour{
 
         // Get new move position based off input.
         Vector3 moveDir = (transform.right * hor) + (transform.forward * ver);
-
+        
         // Move CharController. 
         // .Move will not apply gravity, use SimpleMove if you want gravity.
         cc.Move(moveDir * currentSpeed * Time.deltaTime);
