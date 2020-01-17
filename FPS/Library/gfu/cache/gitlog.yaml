@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1
+MonoBehaviour:
+  m_ObjectHideFlags: 61
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -530159753, guid: 68c7e4565cde54155bb78d8e935f1ddb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cacheType: 3
+  lastUpdatedAtString: 2020-01-17T16:37:26.534+09:00
+  initializedAtString: 2020-01-17T16:34:02.659+09:00
+  log:
+  - commitID: 731ac234242490f296adb06e9ef9bcd4da534b60
+    mergeA: 
+    mergeB: 
+    authorName: totolacky
+    authorEmail: 40504172+totolacky@users.noreply.github.com
+    commitEmail: noreply@github.com
+    commitName: GitHub
+    summary: Initial commit
+    description: 
+    timeString: 2020-01-17T16:26:13.000+09:00
+    commitTimeString: 2020-01-17T16:26:13.000+09:00
+    changes:
+    - path: README.md
+      fullPath: C:\Users\q\Documents\GitHub\FPS\README.md
+      projectPath: ..\README.md
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
