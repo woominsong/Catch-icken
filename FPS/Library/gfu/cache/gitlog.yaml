@@ -13,9 +13,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cacheType: 3
-  lastUpdatedAtString: 2020-01-17T16:58:28.770+09:00
+  lastUpdatedAtString: 2020-01-17T17:03:36.289+09:00
   initializedAtString: 2020-01-17T16:34:02.659+09:00
   log:
+  - commitID: 28c63f29337a224c5105da46d9a7496857879ee6
+    mergeA: 
+    mergeB: 
+    authorName: toto-lacky
+    authorEmail: totolacky@kaist.ac.kr
+    commitEmail: totolacky@kaist.ac.kr
+    commitName: toto-lacky
+    summary: 'feat: Update gitattributes'
+    description: 
+    timeString: 2020-01-17T17:02:53.000+09:00
+    commitTimeString: 2020-01-17T17:02:53.000+09:00
+    changes:
+    - path: .gitattributes
+      fullPath: C:\Users\q\Documents\GitHub\FPS\.gitattributes
+      projectPath: ..\.gitattributes
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+    - path: FPS\Library\gfu\cache\branches.yaml
+      fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Library\gfu\cache\branches.yaml
+      projectPath: Library\gfu\cache\branches.yaml
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+    - path: FPS\Library\gfu\cache\gitlog.yaml
+      fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Library\gfu\cache\gitlog.yaml
+      projectPath: Library\gfu\cache\gitlog.yaml
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
   - commitID: 6e786233baab480ad62a9ee16a360ebf008a3c91
     mergeA: 
     mergeB: 

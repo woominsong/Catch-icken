@@ -13,12 +13,66 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cacheType: 6
-  lastUpdatedAtString: 2020-01-17T16:43:25.994+09:00
-  initializedAtString: 2020-01-17T16:34:02.668+09:00
+  lastUpdatedAtString: 2020-01-17T17:17:32.783+09:00
+  initializedAtString: 2020-01-17T17:17:32.783+09:00
   entries:
-  - path: .gitignore
-    fullPath: C:\Users\q\Documents\GitHub\FPS\.gitignore
-    projectPath: ..\.gitignore
+  - path: FPS\Assets\Ground.prefab
+    fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Assets\Ground.prefab
+    projectPath: Assets\Ground.prefab
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: FPS\Assets\Ground.prefab.meta
+    fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Assets\Ground.prefab.meta
+    projectPath: Assets\Ground.prefab.meta
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: FPS\Assets\Materials.meta
+    fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Assets\Materials.meta
+    projectPath: Assets\Materials.meta
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: FPS\Assets\Materials\Ground-green.mat
+    fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Assets\Materials\Ground-green.mat
+    projectPath: Assets\Materials\Ground-green.mat
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: FPS\Assets\Materials\Ground-green.mat.meta
+    fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Assets\Materials\Ground-green.mat.meta
+    projectPath: Assets\Materials\Ground-green.mat.meta
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: FPS\Assets\Player.meta
+    fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Assets\Player.meta
+    projectPath: Assets\Player.meta
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: FPS\Assets\Player.prefab
+    fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Assets\Player.prefab
+    projectPath: Assets\Player.prefab
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: FPS\Assets\Player.prefab.meta
+    fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Assets\Player.prefab.meta
+    projectPath: Assets\Player.prefab.meta
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: FPS\Assets\Player\PlayerMove.cs
+    fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Assets\Player\PlayerMove.cs
+    projectPath: Assets\Player\PlayerMove.cs
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: FPS\Assets\Player\PlayerMove.cs.meta
+    fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Assets\Player\PlayerMove.cs.meta
+    projectPath: Assets\Player\PlayerMove.cs.meta
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
@@ -31,6 +85,12 @@ MonoBehaviour:
   - path: FPS\Library\assetDatabase3
     fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Library\assetDatabase3
     projectPath: Library\assetDatabase3
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: FPS\Library\EditorInstance.json
+    fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Library\EditorInstance.json
+    projectPath: Library\EditorInstance.json
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
@@ -64,99 +124,81 @@ MonoBehaviour:
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
-  - path: FPS\Library\ShaderCache\1\1ee8cd1a5a2bdaf3432ce92003b42983.bin
-    fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Library\ShaderCache\1\1ee8cd1a5a2bdaf3432ce92003b42983.bin
-    projectPath: Library\ShaderCache\1\1ee8cd1a5a2bdaf3432ce92003b42983.bin
+  - path: FPS\Library\metadata\28\28d31a913445e8a4cba5bd5f4647362e
+    fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Library\metadata\28\28d31a913445e8a4cba5bd5f4647362e
+    projectPath: Library\metadata\28\28d31a913445e8a4cba5bd5f4647362e
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: FPS\Library\ShaderCache\2\2342a991db8d7299ab6f2879d7e6ff92.bin
-    fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Library\ShaderCache\2\2342a991db8d7299ab6f2879d7e6ff92.bin
-    projectPath: Library\ShaderCache\2\2342a991db8d7299ab6f2879d7e6ff92.bin
+  - path: FPS\Library\metadata\28\28d31a913445e8a4cba5bd5f4647362e.info
+    fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Library\metadata\28\28d31a913445e8a4cba5bd5f4647362e.info
+    projectPath: Library\metadata\28\28d31a913445e8a4cba5bd5f4647362e.info
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: FPS\Library\ShaderCache\3\3847d6b094b384a406ac872a5d2f596f.bin
-    fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Library\ShaderCache\3\3847d6b094b384a406ac872a5d2f596f.bin
-    projectPath: Library\ShaderCache\3\3847d6b094b384a406ac872a5d2f596f.bin
+  - path: FPS\Library\metadata\57\57bd77ae1d773d141967758e2bdb37f7
+    fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Library\metadata\57\57bd77ae1d773d141967758e2bdb37f7
+    projectPath: Library\metadata\57\57bd77ae1d773d141967758e2bdb37f7
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: FPS\Library\ShaderCache\3\384ec7e2ddfe01f6107ff9b187189fad.bin
-    fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Library\ShaderCache\3\384ec7e2ddfe01f6107ff9b187189fad.bin
-    projectPath: Library\ShaderCache\3\384ec7e2ddfe01f6107ff9b187189fad.bin
+  - path: FPS\Library\metadata\57\57bd77ae1d773d141967758e2bdb37f7.info
+    fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Library\metadata\57\57bd77ae1d773d141967758e2bdb37f7.info
+    projectPath: Library\metadata\57\57bd77ae1d773d141967758e2bdb37f7.info
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: FPS\Library\ShaderCache\3\39a6a28d980d3ca42248ec13046c89b9.bin
-    fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Library\ShaderCache\3\39a6a28d980d3ca42248ec13046c89b9.bin
-    projectPath: Library\ShaderCache\3\39a6a28d980d3ca42248ec13046c89b9.bin
+  - path: FPS\Library\metadata\64\6498d455e2a2953499525655351da88f
+    fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Library\metadata\64\6498d455e2a2953499525655351da88f
+    projectPath: Library\metadata\64\6498d455e2a2953499525655351da88f
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: FPS\Library\ShaderCache\5\56ea302b005d117f635800dd05388543.bin
-    fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Library\ShaderCache\5\56ea302b005d117f635800dd05388543.bin
-    projectPath: Library\ShaderCache\5\56ea302b005d117f635800dd05388543.bin
+  - path: FPS\Library\metadata\64\6498d455e2a2953499525655351da88f.info
+    fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Library\metadata\64\6498d455e2a2953499525655351da88f.info
+    projectPath: Library\metadata\64\6498d455e2a2953499525655351da88f.info
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: FPS\Library\ShaderCache\6\6b338927cb898693b4ecd44cf1319eea.bin
-    fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Library\ShaderCache\6\6b338927cb898693b4ecd44cf1319eea.bin
-    projectPath: Library\ShaderCache\6\6b338927cb898693b4ecd44cf1319eea.bin
+  - path: FPS\Library\metadata\b2\b214b68b3a628d241bded0daf4b7c08f
+    fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Library\metadata\b2\b214b68b3a628d241bded0daf4b7c08f
+    projectPath: Library\metadata\b2\b214b68b3a628d241bded0daf4b7c08f
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: FPS\Library\ShaderCache\7\7582f779a33383eb9314499ff7e0b739.bin
-    fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Library\ShaderCache\7\7582f779a33383eb9314499ff7e0b739.bin
-    projectPath: Library\ShaderCache\7\7582f779a33383eb9314499ff7e0b739.bin
+  - path: FPS\Library\metadata\b2\b214b68b3a628d241bded0daf4b7c08f.info
+    fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Library\metadata\b2\b214b68b3a628d241bded0daf4b7c08f.info
+    projectPath: Library\metadata\b2\b214b68b3a628d241bded0daf4b7c08f.info
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: FPS\Library\ShaderCache\b\b012a75e540df3a5283c5de11c9f4b14.bin
-    fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Library\ShaderCache\b\b012a75e540df3a5283c5de11c9f4b14.bin
-    projectPath: Library\ShaderCache\b\b012a75e540df3a5283c5de11c9f4b14.bin
+  - path: FPS\Library\metadata\d5\d54c18f369cf82248beb18201f7938f5
+    fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Library\metadata\d5\d54c18f369cf82248beb18201f7938f5
+    projectPath: Library\metadata\d5\d54c18f369cf82248beb18201f7938f5
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: FPS\Library\ShaderCache\b\b2c9c2efa4c6098177bd7908744c16f7.bin
-    fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Library\ShaderCache\b\b2c9c2efa4c6098177bd7908744c16f7.bin
-    projectPath: Library\ShaderCache\b\b2c9c2efa4c6098177bd7908744c16f7.bin
+  - path: FPS\Library\metadata\d5\d54c18f369cf82248beb18201f7938f5.info
+    fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Library\metadata\d5\d54c18f369cf82248beb18201f7938f5.info
+    projectPath: Library\metadata\d5\d54c18f369cf82248beb18201f7938f5.info
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: FPS\Library\ShaderCache\b\b324ed9725d02a9015c85ca2cf97a3b3.bin
-    fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Library\ShaderCache\b\b324ed9725d02a9015c85ca2cf97a3b3.bin
-    projectPath: Library\ShaderCache\b\b324ed9725d02a9015c85ca2cf97a3b3.bin
+  - path: FPS\Library\metadata\dd\dd044f0231c63324587c24c981942438
+    fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Library\metadata\dd\dd044f0231c63324587c24c981942438
+    projectPath: Library\metadata\dd\dd044f0231c63324587c24c981942438
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: FPS\Library\ShaderCache\b\b3369ad922d9216f52759f1a35e869c9.bin
-    fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Library\ShaderCache\b\b3369ad922d9216f52759f1a35e869c9.bin
-    projectPath: Library\ShaderCache\b\b3369ad922d9216f52759f1a35e869c9.bin
+  - path: FPS\Library\metadata\dd\dd044f0231c63324587c24c981942438.info
+    fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Library\metadata\dd\dd044f0231c63324587c24c981942438.info
+    projectPath: Library\metadata\dd\dd044f0231c63324587c24c981942438.info
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: FPS\Library\ShaderCache\b\be5b6c117cb9e32d8b7eef6bb72497dd.bin
-    fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Library\ShaderCache\b\be5b6c117cb9e32d8b7eef6bb72497dd.bin
-    projectPath: Library\ShaderCache\b\be5b6c117cb9e32d8b7eef6bb72497dd.bin
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: FPS\Library\ShaderCache\c\c7f628d8937e958ecd63b87108c92a0e.bin
-    fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Library\ShaderCache\c\c7f628d8937e958ecd63b87108c92a0e.bin
-    projectPath: Library\ShaderCache\c\c7f628d8937e958ecd63b87108c92a0e.bin
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: FPS\Library\ShaderCache\c\ce0f1933661a6b9eb7ff0d417e0f5757.bin
-    fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Library\ShaderCache\c\ce0f1933661a6b9eb7ff0d417e0f5757.bin
-    projectPath: Library\ShaderCache\c\ce0f1933661a6b9eb7ff0d417e0f5757.bin
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: FPS\Library\ShaderCache\c\ce48ab19e2aef98732602112199f3661.bin
-    fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Library\ShaderCache\c\ce48ab19e2aef98732602112199f3661.bin
-    projectPath: Library\ShaderCache\c\ce48ab19e2aef98732602112199f3661.bin
+  - path: FPS\Library\ScriptAssemblies\Assembly-CSharp.dll
+    fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Library\ScriptAssemblies\Assembly-CSharp.dll
+    projectPath: Library\ScriptAssemblies\Assembly-CSharp.dll
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
@@ -166,3 +208,141 @@ MonoBehaviour:
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
+  - path: FPS\Library\StateCache\Hierarchy\46b7a0-57bd77ae1d773d1419.json
+    fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Library\StateCache\Hierarchy\46b7a0-57bd77ae1d773d1419.json
+    projectPath: Library\StateCache\Hierarchy\46b7a0-57bd77ae1d773d1419.json
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: FPS\Library\StateCache\SceneView\d69a67-57bd77ae1d773d1419.json
+    fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Library\StateCache\SceneView\d69a67-57bd77ae1d773d1419.json
+    projectPath: Library\StateCache\SceneView\d69a67-57bd77ae1d773d1419.json
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: FPS\Library\StateCache\SceneView\d69a67-mainStage.json
+    fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Library\StateCache\SceneView\d69a67-mainStage.json
+    projectPath: Library\StateCache\SceneView\d69a67-mainStage.json
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: FPS\Temp\ProcessJobs\5f836afd411440893fb47a6c8572da3c.bakert
+    fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Temp\ProcessJobs\5f836afd411440893fb47a6c8572da3c.bakert
+    projectPath: Temp\ProcessJobs\5f836afd411440893fb47a6c8572da3c.bakert
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: FPS\Temp\ProcessJobs\736fd1ae045d6785dedef2a6028602ad.bakert
+    fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Temp\ProcessJobs\736fd1ae045d6785dedef2a6028602ad.bakert
+    projectPath: Temp\ProcessJobs\736fd1ae045d6785dedef2a6028602ad.bakert
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: FPS\Temp\ProcessJobs\e9a6970f79cd12d8b075e7d72f1b07cb.bakert
+    fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Temp\ProcessJobs\e9a6970f79cd12d8b075e7d72f1b07cb.bakert
+    projectPath: Temp\ProcessJobs\e9a6970f79cd12d8b075e7d72f1b07cb.bakert
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: FPS\Temp\UnityTempFile-01b140807f5e0cb4881402080ff36de7
+    fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Temp\UnityTempFile-01b140807f5e0cb4881402080ff36de7
+    projectPath: Temp\UnityTempFile-01b140807f5e0cb4881402080ff36de7
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: FPS\Temp\UnityTempFile-3a302feb406c4874798005b37fa0ab88
+    fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Temp\UnityTempFile-3a302feb406c4874798005b37fa0ab88
+    projectPath: Temp\UnityTempFile-3a302feb406c4874798005b37fa0ab88
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: FPS\Temp\UnityTempFile-3a7be19ac9362a746a3d8835691f94cf
+    fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Temp\UnityTempFile-3a7be19ac9362a746a3d8835691f94cf
+    projectPath: Temp\UnityTempFile-3a7be19ac9362a746a3d8835691f94cf
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: FPS\Temp\UnityTempFile-4f24a369fc65ec04a989cc18afa4a1ed
+    fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Temp\UnityTempFile-4f24a369fc65ec04a989cc18afa4a1ed
+    projectPath: Temp\UnityTempFile-4f24a369fc65ec04a989cc18afa4a1ed
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: FPS\Temp\UnityTempFile-64afe887dde45f8498103b2fac180205
+    fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Temp\UnityTempFile-64afe887dde45f8498103b2fac180205
+    projectPath: Temp\UnityTempFile-64afe887dde45f8498103b2fac180205
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: FPS\Temp\UnityTempFile-6c23620bb4a2e6949ae3e38bfc152a2b
+    fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Temp\UnityTempFile-6c23620bb4a2e6949ae3e38bfc152a2b
+    projectPath: Temp\UnityTempFile-6c23620bb4a2e6949ae3e38bfc152a2b
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: FPS\Temp\UnityTempFile-90535abcc5d2eab48826d79b428deea3
+    fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Temp\UnityTempFile-90535abcc5d2eab48826d79b428deea3
+    projectPath: Temp\UnityTempFile-90535abcc5d2eab48826d79b428deea3
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: FPS\Temp\UnityTempFile-a8f2aa794732bf04dbe06fd44a132508
+    fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Temp\UnityTempFile-a8f2aa794732bf04dbe06fd44a132508
+    projectPath: Temp\UnityTempFile-a8f2aa794732bf04dbe06fd44a132508
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: FPS\Temp\UnityTempFile-b1e8e3528f4ac5040b5a6d9122fbab20
+    fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Temp\UnityTempFile-b1e8e3528f4ac5040b5a6d9122fbab20
+    projectPath: Temp\UnityTempFile-b1e8e3528f4ac5040b5a6d9122fbab20
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: FPS\Temp\UnityTempFile-c387b317fb7b0214fa0dbeecc0e8480f
+    fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Temp\UnityTempFile-c387b317fb7b0214fa0dbeecc0e8480f
+    projectPath: Temp\UnityTempFile-c387b317fb7b0214fa0dbeecc0e8480f
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: FPS\Temp\UnityTempFile-c8756fcc41732d74f877764f63a7c26e
+    fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Temp\UnityTempFile-c8756fcc41732d74f877764f63a7c26e
+    projectPath: Temp\UnityTempFile-c8756fcc41732d74f877764f63a7c26e
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: FPS\Temp\UnityTempFile-ccc03e5a02984144dadf10d0a5450258
+    fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Temp\UnityTempFile-ccc03e5a02984144dadf10d0a5450258
+    projectPath: Temp\UnityTempFile-ccc03e5a02984144dadf10d0a5450258
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: FPS\Temp\UnityTempFile-d2c1cd0617ad6d94d8224d956c3d60c3
+    fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Temp\UnityTempFile-d2c1cd0617ad6d94d8224d956c3d60c3
+    projectPath: Temp\UnityTempFile-d2c1cd0617ad6d94d8224d956c3d60c3
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: FPS\Temp\UnityTempFile-db4cf473efadf134da66b22dba3baecb
+    fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Temp\UnityTempFile-db4cf473efadf134da66b22dba3baecb
+    projectPath: Temp\UnityTempFile-db4cf473efadf134da66b22dba3baecb
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: FPS\Temp\UnityTempFile-dc4c5df3c6814034b88b606dfd1077a6
+    fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Temp\UnityTempFile-dc4c5df3c6814034b88b606dfd1077a6
+    projectPath: Temp\UnityTempFile-dc4c5df3c6814034b88b606dfd1077a6
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: FPS\Temp\UnityTempFile-e71ed19b83378934a9153bfef9021054
+    fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Temp\UnityTempFile-e71ed19b83378934a9153bfef9021054
+    projectPath: Temp\UnityTempFile-e71ed19b83378934a9153bfef9021054
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: FPS\Temp\UnityTempFile-e9bd2473b3835c5459f8368fbc2349d2
+    fullPath: C:\Users\q\Documents\GitHub\FPS\FPS\Temp\UnityTempFile-e9bd2473b3835c5459f8368fbc2349d2
+    projectPath: Temp\UnityTempFile-e9bd2473b3835c5459f8368fbc2349d2
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
