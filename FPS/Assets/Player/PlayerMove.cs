@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlayerMove : MonoBehaviour{
 
@@ -39,6 +40,11 @@ public class PlayerMove : MonoBehaviour{
     
     Animator anim;
 
+    int screenTouch;
+
+    // Debugging purpose
+    bool wasOverUI;
+
     private void Start()
     {
         cc = GetComponent<CharacterController>();
@@ -46,6 +52,7 @@ public class PlayerMove : MonoBehaviour{
         joystick = FindObjectOfType<Joystick>();
         joybutton = FindObjectOfType<joybutton>();
         currentSpeed = walkSpeed;
+        screenTouch = -1;
     }
 
     private void Update()
@@ -77,9 +84,33 @@ public class PlayerMove : MonoBehaviour{
 
     private void LateUpdate()
     {
-        // Get mouse axis.
-        //mX += Input.GetAxis("Mouse X") * rotSpeedX * (Time.deltaTime * rotDamp);
-        //mY += -Input.GetAxis("Mouse Y") * rotSpeedY * (Time.deltaTime * rotDamp);
+        touchManager();
+        
+        if (screenTouch != -1)
+        {
+            Touch touch = Input.GetTouch(screenTouch);
+
+            if (touch.phase == TouchPhase.Moved)
+            {
+                Debug.Log("d-mX = "+ touch.deltaPosition.x * rotSpeedX);
+                Debug.Log("d-mX = "+ touch.deltaPosition.y * rotSpeedY);
+                mX += touch.deltaPosition.x * rotSpeedX / 300;
+                mY += - touch.deltaPosition.y  * rotSpeedY / 300;
+            }
+        }
+
+        // Debugging lines. If clicked...
+        if (Input.GetMouseButtonDown(0))
+        {
+            wasOverUI = EventSystem.current.IsPointerOverGameObject();
+        }
+
+        if (Input.GetMouseButton(0) && !wasOverUI)
+        {
+            // Get mouse axis.
+            mX += Input.GetAxis("Mouse X") * rotSpeedX * (Time.deltaTime * rotDamp) * 1.5f;
+            mY += -Input.GetAxis("Mouse Y") * rotSpeedY * (Time.deltaTime * rotDamp) * 1.5f;
+        }
 
         // Clamp Y so player can't 'flip'.
         mY = Mathf.Clamp(mY, -80, 80);
@@ -107,5 +138,44 @@ public class PlayerMove : MonoBehaviour{
         // Move CharController. 
         // .Move will not apply gravity, use SimpleMove if you want gravity.
         cc.Move(moveDir * currentSpeed * Time.deltaTime);
+    }
+
+    private void touchManager()
+    {
+        //Debug.Log("screentouch = " + screenTouch);
+        if (screenTouch == -1)
+        {
+            // If there is no screentouch yet, assign new screenTouch
+            for (int i = 0; i < Input.touchCount; i++)
+            {
+                Touch touch = Input.GetTouch(i);
+                if (touch.phase == TouchPhase.Began && !EventSystem.current.IsPointerOverGameObject(touch.fingerId))
+                {
+                    screenTouch = i;
+                    break;
+                }
+            }
+        }
+        else
+        {
+            // Update screenTouch value after any touch is removed
+            for (int i = 0; i < Input.touchCount; i++)
+            {
+                Touch touch = Input.GetTouch(i);
+                if (touch.phase == TouchPhase.Ended)
+                {
+                    // Remove deleted screenTouch
+                    if (i == screenTouch)
+                    {
+                        screenTouch = -1;
+                        break;
+                    }
+                    else if (i < screenTouch)
+                    {
+                        screenTouch--;
+                    }
+                }
+            }
+        }
     }
 }
