@@ -1,0 +1,4 @@
+#Sat Jan 18 02:16:25 KST 2020
+base.0=C\:\\Users\\q\\Documents\\GitHub\\FPS\\FPS\\Temp\\gradleOut\\build\\intermediates\\transforms\\dexMerger\\release\\0
+path.0=classes.dex
+renamed.0=classes.dex

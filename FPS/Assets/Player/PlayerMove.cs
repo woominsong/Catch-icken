@@ -53,6 +53,7 @@ public class PlayerMove : MonoBehaviour{
         joybutton = FindObjectOfType<joybutton>();
         currentSpeed = walkSpeed;
         screenTouch = -1;
+        wasOverUI = true;
     }
 
     private void Update()
@@ -105,7 +106,7 @@ public class PlayerMove : MonoBehaviour{
             wasOverUI = EventSystem.current.IsPointerOverGameObject();
         }
 
-        if (Input.GetMouseButton(0) && !wasOverUI)
+        if (Input.GetMouseButton(0) && !wasOverUI && Input.touchCount == 0)
         {
             // Get mouse axis.
             mX += Input.GetAxis("Mouse X") * rotSpeedX * (Time.deltaTime * rotDamp) * 1.5f;
