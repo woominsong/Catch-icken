@@ -65,7 +65,6 @@ public class PlayerMove : MonoBehaviour{
 
     //socket
     [SerializeField]
-    private GameObject go;
     private SocketIOComponent socket;
 
     private void Start()
@@ -89,7 +88,8 @@ public class PlayerMove : MonoBehaviour{
         screenTouch = -1;
         wasOverUI = true;
 
-        socket = go.GetComponent<SocketManager>().socket;
+        GameObject go = GameObject.Find("SocketIO");
+        socket = go.GetComponent<SocketIOComponent>();
 
         m_attack = GetComponent<Attack>();
         lineVisual = GetComponent<LineRenderer>();
@@ -212,20 +212,25 @@ public class PlayerMove : MonoBehaviour{
 
         // Get new move position based off input.
         Vector3 moveDir = (transform.right * hor) + (transform.forward * ver) - (transform.up * 0.8f);
-        Vector3 displacement = moveDir * currentSpeed * Time.deltaTime;
-
+        
         // Move CharController. 
         // .Move will not apply gravity, use SimpleMove if you want gravity.
-        cc.Move(displacement);
+        var beforePos = transform.position;
+        cc.Move(moveDir * currentSpeed * Time.deltaTime);
+        var afterPos = transform.position;
+        Vector3 displacement = afterPos - beforePos;
 
         // Send data to socket
-        Dictionary<string, string> data = new Dictionary<string, string>();
-        data["playerId"] = "" + playerId;
-        data["x"] = "" + displacement.x;
-        data["y"] = "" + displacement.y;
-        data["z"] = "" + displacement.z;
-        socket.Emit("move", new JSONObject(data));
+        if (displacement.x != 0 || displacement.y != 0 || displacement.z != 0)
+        {
+            Dictionary<string, string> data = new Dictionary<string, string>();
+            data["playerId"] = "" + playerId;
+            data["x"] = "" + displacement.x;
+            data["y"] = "" + displacement.y;
+            data["z"] = "" + displacement.z;
 
+            socket.Emit("move", new JSONObject(data));
+        }
     }
 
     private void touchManager()
