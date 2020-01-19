@@ -185,7 +185,7 @@ public class PlayerMove : MonoBehaviour{
         if (Input.GetKey(runKey) && Input.GetKey(KeyCode.W)) currentSpeed = runSpeed;
 
         // Get new move position based off input.
-        Vector3 moveDir = (transform.right * hor) + (transform.forward * ver);
+        Vector3 moveDir = (transform.right * hor) + (transform.forward * ver) - (transform.up * 0.8f);
         
         // Move CharController. 
         // .Move will not apply gravity, use SimpleMove if you want gravity.
