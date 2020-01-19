@@ -5,9 +5,6 @@ using UnityEngine.EventSystems;
 
 public class OpponentMove : MonoBehaviour
 {
-    [SerializeField]
-    public int playerId;
-
     // Player move variables.
     private CharacterController cc; // Reference to attached CharacterController.
 
@@ -29,7 +26,6 @@ public class OpponentMove : MonoBehaviour
     {
         anim.SetBool("isWalking", true);
         anim.SetBool("isIdle", false);
-
     }
     public void oppIdle()
     {

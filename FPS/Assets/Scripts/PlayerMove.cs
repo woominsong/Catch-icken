@@ -2,11 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using SocketIO;
 
 public class PlayerMove : MonoBehaviour{
 
-    [SerializeField]
     private int playerId;
 
     // Cam look variables.
@@ -66,9 +64,27 @@ public class PlayerMove : MonoBehaviour{
     //socket
     [SerializeField]
     private SocketIOComponent socket;
+    
+    //for Energy
+    public int health;
+
+    public HealthBar healthBar;
+
+    public void SetPlayerId(int id)
+    {
+        playerId = id;
+    }
+
+    public int GetPlayerId()
+    {
+        return playerId;
+    }
+
 
     private void Start()
     {
+        health = 100;
+
         // initialize values
         rotSpeedX = GameSettings.rotSpeedX;
         rotSpeedY = GameSettings.rotSpeedY;
@@ -92,7 +108,9 @@ public class PlayerMove : MonoBehaviour{
         socket = go.GetComponent<SocketIOComponent>();
 
         m_attack = GetComponent<Attack>();
+
         lineVisual = GetComponent<LineRenderer>();
+
         lineVisual.SetVertexCount(lineSegment);
     }
 
