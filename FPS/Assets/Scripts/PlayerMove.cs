@@ -6,27 +6,26 @@ using UnityEngine.EventSystems;
 public class PlayerMove : MonoBehaviour{
 
     // Cam look variables.
-
-    [SerializeField]
+    [HideInInspector]
     private float rotSpeedX; // Mouse X sensitivity control, set in editor.
-    [SerializeField]
+    [HideInInspector]
     private float rotSpeedY; // Mouse Y sensitivity control, set in editor.
 
-    [SerializeField]
+    [HideInInspector]
     private float rotDamp; // Damping value for camera rotation.
 
     private float mY = 0f; // Mouse X.
     private float mX = 0f; // Mouse Y.
 
     // Player move variables.
-    [SerializeField]
+    [HideInInspector]
     private float walkSpeed; // Walk (normal movement) speed, set in editor.
-    [SerializeField]
+    [HideInInspector]
     private float runSpeed; // Run speed, set in editor.
 
     private float currentSpeed; // Stores current movement speed.
 
-    [SerializeField]
+    [HideInInspector]
     private KeyCode runKey; // Run key, set in editor.
 
     private CharacterController cc; // Reference to attached CharacterController.
@@ -37,8 +36,9 @@ public class PlayerMove : MonoBehaviour{
     protected Joystick joystick;
     protected joybutton joybutton;
 
+    [HideInInspector]
     public bool attack;
-    
+
     Animator anim;
 
     int screenTouch;
@@ -48,16 +48,31 @@ public class PlayerMove : MonoBehaviour{
 
     //for Attack class
     Attack m_attack;
+    [HideInInspector]
     public float shootVelocity;
+    [HideInInspector]
+    public Vector3 shootStartPoint;
 
 
     //attack trajectory
     LineRenderer lineVisual;
-    public int lineSegment = 10;
+    [HideInInspector]
+    public int lineSegment;
 
 
     private void Start()
     {
+        // initialize values
+        rotSpeedX = GameSettings.rotSpeedX;
+        rotSpeedY = GameSettings.rotSpeedY;
+        rotDamp = GameSettings.rotDamp;
+        walkSpeed = GameSettings.walkSpeed;
+        runSpeed = GameSettings.runSpeed;
+        attack = GameSettings.attack;
+        runKey = GameSettings.runKey;
+        shootVelocity = GameSettings.shootVelocity;
+        lineSegment = GameSettings.lineSegment;
+
         cc = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
         joystick = FindObjectOfType<Joystick>();
@@ -94,14 +109,16 @@ public class PlayerMove : MonoBehaviour{
         if (attack && joybutton.pressed)
         {
             shootVelocity += 0.4f;
-            VisualizeLine(m_attack.vo);        }
+            //VisualizeLine(m_attack.vo);        
+            VisualizeLine(Quaternion.Euler(transform.rotation.eulerAngles) * new Vector3(0, 1, 1) * shootVelocity);        
+        }
 
         if (attack && !joybutton.pressed)
         {
             attack = false;
             anim.ResetTrigger("attack");
             anim.SetTrigger("attack");
-            m_attack.ShootAttack(shootVelocity);
+            m_attack.ShootAttack(shootStartPoint, shootVelocity);
             shootVelocity = 0;
             for (int i = 0; i < lineSegment; i++)
             {
@@ -116,8 +133,8 @@ public class PlayerMove : MonoBehaviour{
         Vector3 Vxz = vo;
         Vxz.y = 0f;
 
-        Vector3 result = m_attack.shootStartPoint + Vxz * time;
-        float sY = (-0.5f * Mathf.Abs(Physics.gravity.y) * (time * time)) + (vo.y * time) + m_attack.shootStartPoint.y;
+        Vector3 result = shootStartPoint + Vxz * time;
+        float sY = (-0.5f * Mathf.Abs(Physics.gravity.y) * (time * time)) + (vo.y * time) + shootStartPoint.y;
 
         result.y = sY;
         return result;
@@ -125,6 +142,7 @@ public class PlayerMove : MonoBehaviour{
 
     public void VisualizeLine(Vector3 vo)
     {
+        shootStartPoint = transform.position + Quaternion.Euler(transform.rotation.eulerAngles) * new Vector3(0, 0, 0.6f) + new Vector3(0, 0.3f, 0);
         float finalTime = (2.0f * vo.y) / Mathf.Abs(Physics.gravity.y);
 
         for (int i = 0; i < lineSegment; i++)

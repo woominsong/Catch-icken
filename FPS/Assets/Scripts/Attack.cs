@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Attack : MonoBehaviour
 {
-
+    /*
     GameObject prefab;
-    GameObject cam;
+    
 
 
     public Vector3 shootStartPoint;
@@ -16,27 +16,25 @@ public class Attack : MonoBehaviour
 
     private void Start()
     {
-        GameObject cam = transform.Find("Camera").gameObject;
-        playerMove = GetComponent<PlayerMove>();
+        //playerMove = GetComponent<PlayerMove>();
     }
 
-    private void Update()
+    /*private void Update()
     {
         if(playerMove.attack == true)
         {
-            shootStartPoint = transform.position + Quaternion.Euler(transform.rotation.eulerAngles) * new Vector3(0, 0, 0.6f) + new Vector3(0, 0.3f, 0);
-            vo = Quaternion.Euler(transform.rotation.eulerAngles) * new Vector3(0, 1, 1) * playerMove.shootVelocity;
+            //shootStartPoint = transform.position + Quaternion.Euler(transform.rotation.eulerAngles) * new Vector3(0, 0, 0.6f) + new Vector3(0, 0.3f, 0);
+            //vo = Quaternion.Euler(transform.rotation.eulerAngles) * new Vector3(0, 1, 1) * playerMove.shootVelocity;
         }
-    }
+    }*/
 
-    public void ShootAttack(float shootVelocity)
+    public void ShootAttack(Vector3 shootStartPoint, float shootVelocity)
     {
-        prefab = Resources.Load("projectile") as GameObject;
+        GameObject prefab = Resources.Load("projectile") as GameObject;
         GameObject projectile = Instantiate(prefab) as GameObject;
         projectile.transform.position = shootStartPoint;
         Rigidbody rb = projectile.GetComponent<Rigidbody>();
         rb.velocity = Quaternion.Euler(transform.rotation.eulerAngles) * new Vector3(0, 1, 1) * shootVelocity;
-
     }
 
     /*public Vector3 CalculatePosInTime(Vector3 vo, float time)
