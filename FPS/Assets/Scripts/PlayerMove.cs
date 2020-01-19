@@ -2,11 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using SocketIO;
 
 public class PlayerMove : MonoBehaviour{
 
-    [SerializeField]
     private int playerId;
 
     // Cam look variables.
@@ -63,13 +61,26 @@ public class PlayerMove : MonoBehaviour{
     [HideInInspector]
     public int lineSegment;
 
-    //socket
-    [SerializeField]
-    private GameObject go;
-    private SocketIOComponent socket;
+    //for Energy
+    public int health;
+
+    public HealthBar healthBar;
+
+    public void SetPlayerId(int id)
+    {
+        playerId = id;
+    }
+
+    public int GetPlayerId()
+    {
+        return playerId;
+    }
+
 
     private void Start()
     {
+        health = 100;
+
         // initialize values
         rotSpeedX = GameSettings.rotSpeedX;
         rotSpeedY = GameSettings.rotSpeedY;
@@ -89,10 +100,10 @@ public class PlayerMove : MonoBehaviour{
         screenTouch = -1;
         wasOverUI = true;
 
-        socket = go.GetComponent<SocketManager>().socket;
-
         m_attack = GetComponent<Attack>();
+
         lineVisual = GetComponent<LineRenderer>();
+
         lineVisual.SetVertexCount(lineSegment);
     }
 
@@ -212,20 +223,10 @@ public class PlayerMove : MonoBehaviour{
 
         // Get new move position based off input.
         Vector3 moveDir = (transform.right * hor) + (transform.forward * ver) - (transform.up * 0.8f);
-        Vector3 displacement = moveDir * currentSpeed * Time.deltaTime;
-
+        
         // Move CharController. 
         // .Move will not apply gravity, use SimpleMove if you want gravity.
-        cc.Move(displacement);
-
-        // Send data to socket
-        Dictionary<string, string> data = new Dictionary<string, string>();
-        data["playerId"] = "" + playerId;
-        data["x"] = "" + displacement.x;
-        data["y"] = "" + displacement.y;
-        data["z"] = "" + displacement.z;
-        socket.Emit("move", new JSONObject(data));
-
+        cc.Move(moveDir * currentSpeed * Time.deltaTime);
     }
 
     private void touchManager()
