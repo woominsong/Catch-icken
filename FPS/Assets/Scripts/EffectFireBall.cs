@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DeleteBall : MonoBehaviour
+public class EffectFireBall : MonoBehaviour
 {
+    public GameObject explosionEffect;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +20,7 @@ public class DeleteBall : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        Instantiate(explosionEffect, transform.position, transform.rotation);
         Destroy(this.gameObject);
     }
 }

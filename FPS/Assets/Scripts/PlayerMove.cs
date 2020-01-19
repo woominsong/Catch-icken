@@ -5,6 +5,8 @@ using UnityEngine.EventSystems;
 
 public class PlayerMove : MonoBehaviour{
 
+    private int playerId;
+
     // Cam look variables.
     [HideInInspector]
     private float rotSpeedX; // Mouse X sensitivity control, set in editor.
@@ -59,9 +61,26 @@ public class PlayerMove : MonoBehaviour{
     [HideInInspector]
     public int lineSegment;
 
+    //for Energy
+    public int health;
+
+    public HealthBar healthBar;
+
+    public void SetPlayerId(int id)
+    {
+        playerId = id;
+    }
+
+    public int GetPlayerId()
+    {
+        return playerId;
+    }
+
 
     private void Start()
     {
+        health = 100;
+
         // initialize values
         rotSpeedX = GameSettings.rotSpeedX;
         rotSpeedY = GameSettings.rotSpeedY;
