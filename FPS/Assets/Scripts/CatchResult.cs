@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class CatchResult : MonoBehaviour
 {
+    public int playerId;
+    private Score score;
+
     // Start is called before the first frame update
     void Start()
     {
+        score = FindObjectOfType<Score>();
         Destroy(gameObject, 1);
     }
 
@@ -18,9 +22,27 @@ public class CatchResult : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Chicken")
+
+        var me = FindObjectOfType<PlayerMove>();
+        var opponent = FindObjectOfType<OpponentMove>();
+
+        if (me.playerId == 2)
         {
-            other.gameObject.SetActive(false);
+            if (other.tag == "Chicken")
+            {
+                other.gameObject.SetActive(false);
+
+                if (me.playerId == playerId)
+                {
+                    me.playerRecord += 1;
+                }
+                if (opponent.playerId == playerId)
+                {
+                    opponent.playerRecord += 1;
+                }
+
+                score.ScoreUpdate();
+            }
         }
     }
 }

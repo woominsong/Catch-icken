@@ -6,7 +6,9 @@ using SocketIO;
 
 public class PlayerMove : MonoBehaviour{
 
-    private int playerId;
+    public int playerId;
+
+    public int playerRecord;
 
     // Cam look variables.
     [HideInInspector]
@@ -72,16 +74,6 @@ public class PlayerMove : MonoBehaviour{
     public float health;
 
     public HealthBar healthBar;
-
-    public void SetPlayerId(int id)
-    {
-        playerId = id;
-    }
-
-    public int GetPlayerId()
-    {
-        return playerId;
-    }
 
 
     private void Start()
@@ -184,7 +176,7 @@ public class PlayerMove : MonoBehaviour{
             catchChicken = false;
             anim.ResetTrigger("attack");
             anim.SetTrigger("attack");
-            attackOrCatch.ShootCatch(shootStartPoint, shootVelocity);
+            attackOrCatch.ShootCatch(shootStartPoint, shootVelocity, playerId);
             shootVelocity = 0;
             for (int i = 0; i < lineSegment; i++)
             {

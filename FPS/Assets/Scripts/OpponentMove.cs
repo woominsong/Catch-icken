@@ -8,6 +8,7 @@ public class OpponentMove : MonoBehaviour
 {
     [SerializeField]
     public int playerId;
+    public int playerRecord;
 
     // Player move variables.
     private CharacterController cc; // Reference to attached CharacterController.
