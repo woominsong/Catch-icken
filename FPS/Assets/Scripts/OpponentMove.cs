@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class OpponentMove : MonoBehaviour
 {
-    [SerializeField]
     public int playerId;
+    private int game_id;
     public int playerRecord;
 
     // Player move variables.
@@ -22,6 +22,30 @@ public class OpponentMove : MonoBehaviour
     
     private void Start()
     {
+        // Initialize player position
+        playerId = PlayerPrefs.GetInt("playerId");
+        game_id = PlayerPrefs.GetInt("game_id");
+
+        if (playerId == 1)
+        {
+            playerId = 2;
+        }
+        else
+        {
+            playerId = 1;
+        }
+
+        if (playerId == 1)
+        {
+            transform.position = GameSettings.p1StartPos;
+            transform.rotation = GameSettings.p1StartRot;
+        }
+        else
+        {
+            transform.position = GameSettings.p2StartPos;
+            transform.rotation = GameSettings.p2StartRot;
+        }
+
         // initialize values
         cc = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
@@ -42,11 +66,13 @@ public class OpponentMove : MonoBehaviour
         anim.SetBool("isWalking", true);
         anim.SetBool("isIdle", false);
     }
+
     public void oppIdle()
     {
         anim.SetBool("isWalking", false);
         anim.SetBool("isIdle", true);
     }
+
     public void oppAttack(Vector3 shootStartPoint, float shootVelocity)
     {
         anim.ResetTrigger("attack");
@@ -54,9 +80,10 @@ public class OpponentMove : MonoBehaviour
         m_attack.ShootAttack(shootStartPoint, shootVelocity);
     }
 
-    public void oppMove(Vector3 displacement)
+    public void oppMove(Vector3 displacement, float ry)
     {
         cc.Move(displacement);
+        transform.eulerAngles += new Vector3(0,ry,0);
     }
 
 }

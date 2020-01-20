@@ -36,7 +36,7 @@ public class CreateGame : MonoBehaviour
 
             Debug.Log("Move to waiting room of game " + data["game_id"].CreateString().Trim(trim));
             PlayerPrefs.SetInt("game_id", int.Parse(data["game_id"].CreateString().Trim(trim)));
-            socket.Emit("rm_list");
+            socket.Emit("rm_list", new JSONObject(new Dictionary<string, string>()));
         });
 
         socket.On("removed", (SocketIOEvent e) => {
