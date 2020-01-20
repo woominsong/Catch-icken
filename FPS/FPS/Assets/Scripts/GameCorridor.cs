@@ -5,6 +5,7 @@ using UnityEngine.EventSystems;
 using SocketIO;
 using Leguar.TotalJSON;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameCorridor : MonoBehaviour{
     
@@ -25,6 +26,10 @@ public class GameCorridor : MonoBehaviour{
         Debug.Log("GameCorridor script started");
 
         socket.On("connected", (SocketIOEvent e) => {
+            Dictionary<string, string> send_data = new Dictionary<string, string>();
+            send_data["client_id"] = PlayerPrefs.GetInt("client_id").ToString();
+            send_data["nickname"] = PlayerPrefs.GetString("userName").ToString();
+            socket.Emit("update_sid", new JSONObject(send_data));
             socket.Emit("reqGamerooms");
         });
 
@@ -53,15 +58,38 @@ public class GameCorridor : MonoBehaviour{
                     {
                         Dictionary<string, string> send_data = new Dictionary<string, string>();
                         send_data["game_id"] = "" + game_id;
+                        send_data["client_id"] = "" + PlayerPrefs.GetInt("client_id");
                         socket.Emit("join_game", new JSONObject(send_data));
-
-                        Debug.Log("Move to waiting room of "+game_name);
-                        // TODO: move to game waiting room
                     }
                 });
             }
-
         });
+
+        socket.On("confirm_join", (SocketIOEvent e) => {
+            Debug.Log("confirm_join recieved");
+            var data = JSON.ParseString(e.data.ToString());
+
+            Debug.Log("Move to waiting room of game " + data["game_id"].CreateString().Trim(trim));
+            PlayerPrefs.SetInt("game_id",int.Parse(data["game_id"].CreateString().Trim(trim)));
+            PlayerPrefs.SetInt("playerId", 2);
+            socket.Emit("rm_list");
+            SceneManager.LoadScene("WaitingRoom");
+        });
+
+        socket.On("game_full", (SocketIOEvent e) => {
+            Debug.Log("game_full recieved");
+            SceneManager.LoadScene("GameCorridor");
+        });
+
+        socket.On("removed", (SocketIOEvent e) => {
+            Debug.Log("removed recieved");
+            SceneManager.LoadScene("CreateGame");
+        });
+    }
+
+    public void createGame()
+    {
+        socket.Emit("rm_list");
     }
 
 }

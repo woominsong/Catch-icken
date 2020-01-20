@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 public class OpponentMove : MonoBehaviour
 {
+    [SerializeField]
+    public int playerId;
+
     // Player move variables.
     private CharacterController cc; // Reference to attached CharacterController.
 
