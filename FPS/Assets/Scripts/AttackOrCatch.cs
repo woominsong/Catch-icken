@@ -37,9 +37,10 @@ public class AttackOrCatch : MonoBehaviour
         rb.velocity = Quaternion.Euler(transform.rotation.eulerAngles) * new Vector3(0, 1, 1) * shootVelocity;
     }
 
-    public void ShootCatch(Vector3 shootStartPoint, float shootVelocity)
+    public void ShootCatch(Vector3 shootStartPoint, float shootVelocity, int playerId)
     {
         GameObject prefab = Resources.Load("catchProjectile") as GameObject;
+        prefab.GetComponent<EffectCatchBall>().playerId = playerId;
         GameObject projectile = Instantiate(prefab) as GameObject;
         projectile.transform.position = shootStartPoint;
         Rigidbody rb = projectile.GetComponent<Rigidbody>();
