@@ -10,7 +10,9 @@ public class PlayerMove : MonoBehaviour{
     public int playerId;
     private int game_id;
     private bool playersReady = false;
+    private bool isWalking = false;
     private char[] trim = { '"' };
+    private int cnt = 0;
 
     public int playerRecord;
 
@@ -155,16 +157,27 @@ public class PlayerMove : MonoBehaviour{
         if (!playersReady) return;
 
         // Set animation
-        if (joystick.pressed)
+        if (joystick.pressed && !isWalking)
         {
             anim.SetBool("isWalking", true);
-            anim.SetBool("isIdle", false);
+            isWalking = true;
+
+            Dictionary<string, string> data = new Dictionary<string, string>();
+            data["playerId"] = "" + playerId;
+            data["game_id"] = "" + game_id;
+            socket.Emit("player_walk", new JSONObject(data));
         }
-        else
+        else if (!joystick.pressed && isWalking)
         {
             anim.SetBool("isWalking", false);
-            anim.SetBool("isIdle", true);
+            isWalking = false;
+
+            Dictionary<string, string> data = new Dictionary<string, string>();
+            data["playerId"] = "" + playerId;
+            data["game_id"] = "" + game_id;
+            socket.Emit("player_idle", new JSONObject(data));
         }
+
         if (!attack && attackJoyButton.pressed)
         {
             attack = true;
@@ -213,6 +226,18 @@ public class PlayerMove : MonoBehaviour{
                 lineVisual.SetPosition(i, Vector3.zero);
             }
         }
+    }
+
+    private void fixPosition()
+    {
+        Dictionary<string, string> data = new Dictionary<string, string>();
+        data["playerId"] = "" + playerId;
+        data["game_id"] = "" + game_id;
+        data["x"] = "" + transform.position.x;
+        data["y"] = "" + transform.position.y;
+        data["z"] = "" + transform.position.z;
+        data["ry"] = "" + transform.eulerAngles.y;
+        socket.Emit("fix_position", new JSONObject(data));
     }
 
     public Vector3 CalculatePosInTime(Vector3 vo, float time)
@@ -315,6 +340,13 @@ public class PlayerMove : MonoBehaviour{
             data["ry"] = "" + rotDisp.y;
 
             socket.Emit("move", new JSONObject(data));
+        }
+
+        cnt++;
+        if(cnt%30 == 0)
+        {
+            cnt = 0;
+            fixPosition();
         }
     }
 

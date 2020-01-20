@@ -48,15 +48,57 @@ public class SocketManager : MonoBehaviour
                 }
             }
 
-            //Debug.Log("move1");
+        });
 
-            //Debug.Log("move2");
-            //Debug.Log(data["playerId"].CreateString().Trim(trim));
+        socket.On("fix_position", (SocketIOEvent e) => {
+            Debug.Log("fix_position");
+            var data = JSON.ParseString(e.data.ToString());
+            var om = GetComponentsInChildren<OpponentMove>();
+            int pId = int.Parse(data["playerId"].CreateString().Trim(trim));
+            for (int i = 0; i < om.Length; i++)
+            {
+                //Debug.Log("move5");
+                if (om[i].playerId == pId)
+                {
+                    om[i].transform.position = new Vector3(float.Parse(data["x"].CreateString().Trim(trim)), float.Parse(data["y"].CreateString().Trim(trim)), float.Parse(data["z"].CreateString().Trim(trim)));
+                    om[i].transform.eulerAngles = new Vector3(0, float.Parse(data["ry"].CreateString().Trim(trim)),0);
+                    break;
+                }
+            }
 
-            //Debug.Log("move3");
-            //Debug.Log("Player "+pId+"moved by ("+data["x"].CreateString()+"," + data["y"].CreateString() + "," + data["z"].CreateString() + ")");
-            //Debug.Log("move4");
-            //Debug.Log(om.Length);
+        });
+
+        socket.On("player_walk", (SocketIOEvent e) => {
+            Debug.Log("player_walk");
+            var data = JSON.ParseString(e.data.ToString());
+            var om = GetComponentsInChildren<OpponentMove>();
+            int pId = int.Parse(data["playerId"].CreateString().Trim(trim));
+            for (int i = 0; i < om.Length; i++)
+            {
+                //Debug.Log("move5");
+                if (om[i].playerId == pId)
+                {
+                    om[i].oppWalk();
+                    break;
+                }
+            }
+
+        });
+
+        socket.On("player_idle", (SocketIOEvent e) => {
+            Debug.Log("player_idle");
+            var data = JSON.ParseString(e.data.ToString());
+            var om = GetComponentsInChildren<OpponentMove>();
+            int pId = int.Parse(data["playerId"].CreateString().Trim(trim));
+            for (int i = 0; i < om.Length; i++)
+            {
+                //Debug.Log("move5");
+                if (om[i].playerId == pId)
+                {
+                    om[i].oppIdle();
+                    break;
+                }
+            }
 
         });
     }

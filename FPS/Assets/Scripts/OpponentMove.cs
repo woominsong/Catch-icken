@@ -64,13 +64,11 @@ public class OpponentMove : MonoBehaviour
     public void oppWalk()
     {
         anim.SetBool("isWalking", true);
-        anim.SetBool("isIdle", false);
     }
 
     public void oppIdle()
     {
         anim.SetBool("isWalking", false);
-        anim.SetBool("isIdle", true);
     }
 
     public void oppAttack(Vector3 shootStartPoint, float shootVelocity)
