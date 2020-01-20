@@ -5,6 +5,7 @@ using UnityEngine;
 public class EffectCatchBall : MonoBehaviour
 {
     public GameObject CatchEffect;
+    public int playerId;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +20,9 @@ public class EffectCatchBall : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Instantiate(CatchEffect, transform.position, transform.rotation);
+        GameObject prefab = Resources.Load("CatchEffect") as GameObject;
+        prefab.GetComponent<CatchResult>().playerId = playerId;
+        Instantiate(prefab, transform.position, transform.rotation);
         Destroy(this.gameObject);
     }
 }

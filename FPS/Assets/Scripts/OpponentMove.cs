@@ -8,6 +8,7 @@ public class OpponentMove : MonoBehaviour
 {
     public int playerId;
     private int game_id;
+    public int playerRecord;
 
     // Player move variables.
     private CharacterController cc; // Reference to attached CharacterController.

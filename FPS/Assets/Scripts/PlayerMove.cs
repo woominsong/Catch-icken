@@ -12,6 +12,8 @@ public class PlayerMove : MonoBehaviour{
     private bool playersReady = false;
     private char[] trim = { '"' };
 
+    public int playerRecord;
+
     // Cam look variables.
     [HideInInspector]
     private float rotSpeedX; // Mouse X sensitivity control, set in editor.
@@ -204,7 +206,7 @@ public class PlayerMove : MonoBehaviour{
             catchChicken = false;
             anim.ResetTrigger("attack");
             anim.SetTrigger("attack");
-            attackOrCatch.ShootCatch(shootStartPoint, shootVelocity);
+            attackOrCatch.ShootCatch(shootStartPoint, shootVelocity, playerId);
             shootVelocity = 0;
             for (int i = 0; i < lineSegment; i++)
             {

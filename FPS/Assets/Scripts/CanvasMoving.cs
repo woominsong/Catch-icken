@@ -15,7 +15,7 @@ public class CanvasMoving : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.LookAt(transform.position + playerCamera.transform.rotation * Vector3.back,
-            playerCamera.transform.rotation * Vector3.down);
+        transform.LookAt(transform.position + playerCamera.transform.rotation * Vector3.forward,
+            playerCamera.transform.rotation * Vector3.up);
     }
 }
