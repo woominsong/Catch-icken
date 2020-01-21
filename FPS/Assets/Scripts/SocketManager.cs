@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
+using UnityEngine.UI;
 using SocketIO;
 using Leguar.TotalJSON;
 
@@ -17,10 +17,14 @@ public class SocketManager : MonoBehaviour
 
     private char[] trim = { '"' };
 
+    public int maxNumberOfChicken = 20;
+
     void Start()
     {
         attackOrCatch = GetComponentInChildren<AttackOrCatch>();
         score = FindObjectOfType<Score>();
+
+        Text[] texts = FindObjectOfType<Canvas>().GetComponentsInChildren<Text>();
 
         GameObject go = GameObject.Find("SocketIO");
         socket = go.GetComponent<SocketIOComponent>();
@@ -45,27 +49,29 @@ public class SocketManager : MonoBehaviour
             var cs = GetComponent<ChickenSpawner>();
             int pId = int.Parse(data["playerId"].CreateString().Trim(trim));
 
-            Debug.Log("spawn_chickens 1");
+            //Debug.Log("spawn_chickens 1");
             ArrayList x = (ArrayList)MyUtil.StringToObject(data["x"].CreateString().Trim(trim));
-            Debug.Log("spawn_chickens 2");
+            //Debug.Log("spawn_chickens 2");
             ArrayList z = (ArrayList)MyUtil.StringToObject(data["z"].CreateString().Trim(trim));
-            Debug.Log("spawn_chickens 3");
+            //Debug.Log("spawn_chickens 3");
             ArrayList ry = (ArrayList)MyUtil.StringToObject(data["ry"].CreateString().Trim(trim));
-            Debug.Log("spawn_chickens 4");
+            //Debug.Log("spawn_chickens 4");
             ArrayList cid = (ArrayList)MyUtil.StringToObject(data["cid"].CreateString().Trim(trim));
-            Debug.Log("spawn_chickens 5");
+            //Debug.Log("spawn_chickens 5");
 
-            Debug.Log(x.Count);
+            //Debug.Log(x.Count);
 
             for (int i = 0; i < x.Count; i++)
             {
-                Debug.Log("create:");
-                Debug.Log((float)x[i]);
-                Debug.Log((float)z[i]);
-                Debug.Log((int)ry[i]);
-                Debug.Log((int)cid[i]);
+                //Debug.Log("create:");
+                //Debug.Log((float)x[i]);
+                //Debug.Log((float)z[i]);
+                //Debug.Log((int)ry[i]);
+                //Debug.Log((int)cid[i]);
                 cs.CreateChicken((float)x[i], (float)z[i], (int)ry[i], (int)cid[i]);
             }
+
+            FindObjectOfType<ChickenSpawner>().currentNumberOfChicken = maxNumberOfChicken;
         });
 
         socket.On("move", (SocketIOEvent e) => {
@@ -146,7 +152,7 @@ public class SocketManager : MonoBehaviour
             for (int i = 0; i < chickens.Length; i++)
             {
                 Debug.Log("chicken_hit 6");
-                if (chickens[i].chickenId == pId)
+                if (chickens[i].chickenId == cId)
                 {
                     Debug.Log("chicken_hit 7");
                     chickens[i].CatchChicken();

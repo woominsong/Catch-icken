@@ -9,6 +9,8 @@ public class CatchResult : MonoBehaviour
     private int game_id;
     private Score score;
 
+    public int pId;
+
     [HideInInspector]
     public SocketIOComponent socket;
 
@@ -39,7 +41,7 @@ public class CatchResult : MonoBehaviour
 
         if (other.tag == "Chicken")
         {
-            if (me.playerId == playerId)
+            if (me.playerId == pId)
             {
                 var chickenId = other.gameObject.GetComponent<ChickenController>().chickenId;
                 //other.gameObject.GetComponent<ChickenController>().CatchChicken();

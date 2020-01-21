@@ -203,7 +203,7 @@ fbbf64dcbe0662e3eda1dec45ea8f895 Vuforia.UnityExtensions.dll:Vuforia.WireframeBe
 400574be6b0c3414a9912341827de045 Assembly-CSharp.dll:.joybutton
 3101df66a9fdac0a23766a3d9a52da01 Assembly-CSharp.dll:.FloatingJoystick
 b3ab2106268377ffe25dd18ac23dca28 Unity.TextMeshPro.dll:TMPro.TMP_Asset
-899e2d8b48415d743011a6b20b59366c Assembly-CSharp.dll:.SocketManager
+dd85f519f0a8d44b7c22e1cadca6a543 Assembly-CSharp.dll:.SocketManager
 71bb6a6b6c8f052f948db64c7dd3ca4f Unity.Analytics.Editor.dll:UnityEditor.Analytics.AnalyticsEventTrackerEditor
 71bb6a6b6c8f052f948db64c7dd3ca4f Unity.TextMeshPro.dll:TMPro.TMP_SpriteAnimator
 18276cee0543fd305cd00ff5a56aec86 Assembly-CSharp.dll:SocketIO.SocketIOComponent
@@ -296,7 +296,7 @@ fbbf64dcbe0662e3eda1dec45ea8f895 Vuforia.UnityExtensions.dll:Vuforia.WireframeBe
 71bb6a6b6c8f052f948db64c7dd3ca4f Vuforia.UnityExtensions.dll:Vuforia.WireframeTrackableEventHandler
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.TestSocketIO
 c7b6c95feb8acbb856b4da3de98f1d33 Assembly-CSharp.dll:.VariableJoystick
-4cbe9476497f925fc472d2c8ebfeabdf Assembly-CSharp.dll:.CatchResult
+2899b2ba959e0eda4988895c22054f86 Assembly-CSharp.dll:.CatchResult
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:Leguar.TotalJSON.Internal.JSONRuntimeDebugContainer
 0077fc8e4fbae67f80e80ebd534de5a0 Vuforia.UnityExtensions.dll:Vuforia.AnchorBehaviour
 ff1cfd768b207053e073f8002f937b81 Vuforia.UnityExtensions.dll:Vuforia.AnchorInputListenerBehaviour

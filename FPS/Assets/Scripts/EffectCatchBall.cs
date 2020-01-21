@@ -21,7 +21,7 @@ public class EffectCatchBall : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         GameObject prefab = Resources.Load("CatchEffect") as GameObject;
-        prefab.GetComponent<CatchResult>().playerId = playerId;
+        prefab.GetComponent<CatchResult>().pId = playerId;
         Instantiate(prefab, transform.position, transform.rotation);
         Destroy(this.gameObject);
     }

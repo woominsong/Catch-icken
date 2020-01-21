@@ -28,13 +28,14 @@ public class ChickenSpawner : MonoBehaviour
         GameObject go = GameObject.Find("SocketIO");
         socket = go.GetComponent<SocketIOComponent>();
 
-        /*if (playerId == 1)
-        {
-            SpawnChickens();
-        }*/
+        
+        //if (playerId == 1)
+        //{
+        //    SpawnChickens();
+        //}
         //SpawnChickens();
         
-        //chickenControllers = FindObjectsOfType<ChickenController>();
+        chickenControllers = FindObjectsOfType<ChickenController>();
         
         Text[] texts = FindObjectOfType<Canvas>().GetComponentsInChildren<Text>();
         foreach (Text t in texts)
@@ -110,7 +111,6 @@ public class ChickenSpawner : MonoBehaviour
         data["cid"] = MyUtil.ObjectToString(cid);
         Debug.Log("emit spawn_chickens");
         socket.Emit("spawn_chickens", new JSONObject(data));
-        currentNumberOfChicken = maxNumberOfChicken;
     }
 
     public void CreateChicken(float x, float z, int ry, int chickenId)
