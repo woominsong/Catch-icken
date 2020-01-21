@@ -21,10 +21,15 @@ public class OpponentMove : MonoBehaviour
     //for Energy
     public float health;
     private Slider healthSlider;
+
+    //color
+    public Material material;
+    Renderer rend;
     
 
     private void Start()
     {
+
         // Initialize player position
         playerId = PlayerPrefs.GetInt("playerId");
         game_id = PlayerPrefs.GetInt("game_id");
@@ -49,6 +54,13 @@ public class OpponentMove : MonoBehaviour
         {
             transform.position = GameSettings.p2StartPos;
             transform.rotation = GameSettings.p2StartRot;
+        }
+
+        rend = GetComponentInChildren<SkinnedMeshRenderer>();
+        rend.enabled = true;
+        if (playerId == 2)
+        {
+            rend.material = material;
         }
 
         // initialize values

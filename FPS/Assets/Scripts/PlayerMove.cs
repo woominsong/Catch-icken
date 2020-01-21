@@ -89,9 +89,14 @@ public class PlayerMove : MonoBehaviour
     private float timer;
     int resultSeconds;
 
+    //color
+    public Material material;
+    Renderer rend;
+
 
     private void Start()
     {
+        
 
         DarkImage.gameObject.SetActive(false);
 
@@ -108,6 +113,15 @@ public class PlayerMove : MonoBehaviour
             transform.position = GameSettings.p2StartPos;
             transform.rotation = GameSettings.p2StartRot;
         }
+
+        rend = GetComponentInChildren<SkinnedMeshRenderer>();
+        rend.enabled = true;
+
+        if (playerId == 2)
+        {
+            rend.material = material;
+        }
+        //color
 
 
         health = 100;
