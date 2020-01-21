@@ -89,9 +89,13 @@ public class PlayerMove : MonoBehaviour
     private float timer;
     int resultSeconds;
 
+    //audio
+    [SerializeField]
+    Audio audio;
 
     private void Start()
     {
+        //audio.game.Play();
 
         DarkImage.gameObject.SetActive(false);
 
@@ -263,6 +267,9 @@ public class PlayerMove : MonoBehaviour
             data["vz"] = "" + v.z;
             socket.Emit("attack", new JSONObject(data));
 
+            audio.shoot.Play();
+            audio.shoot_1.Play();
+
             shootVelocity = 0;
             for (int i = 0; i < lineSegment; i++)
             {
@@ -300,6 +307,9 @@ public class PlayerMove : MonoBehaviour
             data["vz"] = "" + v.z;
             socket.Emit("catch", new JSONObject(data));
 
+            audio.shoot.Play();
+            audio.shoot_2.Play();
+
             shootVelocity = 0;
             for (int i = 0; i < lineSegment; i++)
             {
@@ -311,11 +321,12 @@ public class PlayerMove : MonoBehaviour
 
         if (health <= 0)
         {
+            audio.player_die.Play();
             Dictionary<string, string> data = new Dictionary<string, string>();
             data["playerId"] = "" + playerId;
             data["game_id"] = "" + game_id;
             socket.Emit("dead", new JSONObject(data));
-
+            
             anim.ResetTrigger("Die");
             anim.SetTrigger("Die");
             DarkImage.gameObject.SetActive(true);

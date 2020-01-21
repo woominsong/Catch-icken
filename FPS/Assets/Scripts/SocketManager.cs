@@ -8,7 +8,6 @@ using UnityEngine.SceneManagement;
 
 public class SocketManager : MonoBehaviour
 {
-    
     [HideInInspector]
     public SocketIOComponent socket;
 
@@ -20,8 +19,15 @@ public class SocketManager : MonoBehaviour
 
     public int maxNumberOfChicken = 20;
 
-    void Start()
+    //audio
+    [SerializeField]
+    private Audio audio;
+    [SerializeField]
+    private Audio oppAudio;
+    private void Start()
     {
+        audio = FindObjectOfType<Audio>();
+
         Corridor_Music.Instance.gameObject.GetComponent<AudioSource>().Stop();
 
         attackOrCatch = GetComponentInChildren<AttackOrCatch>();
@@ -48,6 +54,9 @@ public class SocketManager : MonoBehaviour
 
         socket.On("spawn_chickens", (SocketIOEvent e) => {
             Debug.Log("spawn_chickens");
+
+            audio.game.Play();
+
             var data = JSON.ParseString(e.data.ToString());
             var cs = GetComponent<ChickenSpawner>();
             int pId = int.Parse(data["playerId"].CreateString().Trim(trim));
@@ -154,14 +163,18 @@ public class SocketManager : MonoBehaviour
             var data = JSON.ParseString(e.data.ToString());
             var om = GetComponentsInChildren<OpponentMove>();
             int pId = int.Parse(data["playerId"].CreateString().Trim(trim));
+            bool mine = true;
             for (int i = 0; i < om.Length; i++)
             {
                 if (om[i].playerId == pId)
                 {
                     om[i].oppHit();
+                    oppAudio.player_hit.Play();
+                    mine = false;
                     break;
                 }
             }
+            if (mine) audio.player_hit.Play();
         });
 
         socket.On("container_hit", (SocketIOEvent e) => {
@@ -174,12 +187,21 @@ public class SocketManager : MonoBehaviour
                 if (containers[i].containerId == pId)
                 {
                     containers[i].AttackContainerHP();
+                    if(pId == PlayerPrefs.GetInt("playerId"))
+                    {
+                        audio.container_hit.Play();
+                    }
+                    else
+                    {
+                        oppAudio.container_hit.Play();
+                    }
                 }
             }
         });
 
         socket.On("dead", (SocketIOEvent e) => {
             Debug.Log("dead");
+            oppAudio.player_die.Play();
             var data = JSON.ParseString(e.data.ToString());
             var om = GetComponentsInChildren<OpponentMove>();
             int pId = int.Parse(data["playerId"].CreateString().Trim(trim));
@@ -188,6 +210,7 @@ public class SocketManager : MonoBehaviour
                 if (om[i].playerId == pId)
                 {
                     om[i].oppDie();
+                    
                     break;
                 }
             }
@@ -212,36 +235,38 @@ public class SocketManager : MonoBehaviour
         socket.On("chicken_hit", (SocketIOEvent e) => {
             Debug.Log("chicken_hit");
             var data = JSON.ParseString(e.data.ToString());
-            Debug.Log("chicken_hit 1");
             var chickens = FindObjectsOfType<ChickenController>();
-            Debug.Log("chicken_hit 2");
             var om = GetComponentsInChildren<OpponentMove>();
-            Debug.Log("chicken_hit 3");
             int pId = int.Parse(data["playerId"].CreateString().Trim(trim));
-            Debug.Log("chicken_hit 4");
             int cId = int.Parse(data["chickenId"].CreateString().Trim(trim));
-            Debug.Log("chicken_hit 5");
+
+            bool mine = true;
+
             for (int i = 0; i < chickens.Length; i++)
             {
-                Debug.Log("chicken_hit 6");
                 if (chickens[i].chickenId == cId)
                 {
-                    Debug.Log("chicken_hit 7");
                     chickens[i].CatchChicken();
-                    Debug.Log("chicken_hit 10");
                     break;
                 }
             }
             for (int i = 0; i < om.Length; i++)
             {
-                Debug.Log("chicken_hit 8");
                 if (om[i].playerId == pId)
                 {
-                    Debug.Log("chicken_hit 9");
                     om[i].playerRecord += 1;
                     score.ScoreUpdate();
+                    mine = false;
                     break;
                 }
+            }
+            if (mine)
+            {
+                audio.chicken_hit.Play();
+            }
+            else
+            {
+                oppAudio.chicken_hit.Play();
             }
 
         });
@@ -257,6 +282,8 @@ public class SocketManager : MonoBehaviour
                 if (om[i].playerId == pId)
                 {
                     om[i].oppAttack();
+                    oppAudio.shoot.Play();
+                    oppAudio.shoot_1.Play();
                     break;
                 }
             }
@@ -277,6 +304,8 @@ public class SocketManager : MonoBehaviour
                 if (om[i].playerId == pid)
                 {
                     om[i].oppAttack();
+                    oppAudio.shoot.Play();
+                    oppAudio.shoot_2.Play();
                     break;
                 }
             }
