@@ -2,10 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using SocketIO;
 
 public class ContanerId : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [HideInInspector]
+    public SocketIOComponent socket;
+
+    public int playerId;
+    private int game_id;
 
     public int containerId;
     public int containerHP = 100;
@@ -15,6 +20,12 @@ public class ContanerId : MonoBehaviour
     Score score;
     void Start()
     {
+        playerId = PlayerPrefs.GetInt("playerId");
+        game_id = PlayerPrefs.GetInt("game_id");
+
+        GameObject go = GameObject.Find("SocketIO");
+        socket = go.GetComponent<SocketIOComponent>();
+
         chickenSpawner = FindObjectOfType<ChickenSpawner>();
         playerMove = FindObjectOfType<PlayerMove>();
         score = FindObjectOfType<Score>();
@@ -41,7 +52,10 @@ public class ContanerId : MonoBehaviour
     IEnumerator RefreshAfterTime(float time)
     {
         yield return new WaitForSeconds(time);
-        containerHP = 100;
-        GetComponentInChildren<Slider>().value = 1;
+
+        Dictionary<string, string> data = new Dictionary<string, string>();
+        data["playerId"] = "" + playerId;
+        data["game_id"] = "" + game_id;
+        socket.Emit("container_restore", new JSONObject(data));
     }
 }

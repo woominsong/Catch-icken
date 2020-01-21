@@ -139,6 +139,21 @@ public class SocketManager : MonoBehaviour
             }
         });
 
+        socket.On("container_restore", (SocketIOEvent e) => {
+            Debug.Log("container_restore");
+            var data = JSON.ParseString(e.data.ToString());
+            var containers = FindObjectsOfType<ContanerId>();
+            int pId = int.Parse(data["playerId"].CreateString().Trim(trim));
+            for (int i = 0; i < containers.Length; i++)
+            {
+                if (containers[i].containerId == pId)
+                {
+                    containers[i].containerHP = 100;
+                    containers[i].GetComponentInChildren<Slider>().value = 1;
+                }
+            }
+        });
+
         socket.On("chicken_hit", (SocketIOEvent e) => {
             Debug.Log("chicken_hit");
             var data = JSON.ParseString(e.data.ToString());

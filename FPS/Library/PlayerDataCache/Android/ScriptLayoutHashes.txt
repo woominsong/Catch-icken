@@ -2,17 +2,18 @@ Android
 PlayerPath?
 C:/Users/q/Documents/GitHub/FPS/FPS/Builds/build.apk
 SceneListBegin?
+Assets/Scenes/Start.unity
 Assets/Scenes/Login.unity
 Assets/Scenes/CharacterScene.unity
 Assets/Scenes/CreateGame.unity
 Assets/Scenes/GameCorridor.unity
 Assets/Scenes/Score.unity
-Assets/Scenes/Test.unity
 Assets/Scenes/WaitingRoom.unity
 SceneListEnd?
 3101df66a9fdac0a23766a3d9a52da01 Assembly-CSharp.dll:.Joystick
 3c08375166df118bd1801438fc36b92f Unity.TextMeshPro.dll:TMPro.TMP_SelectionCaret
 77c21079ace8d76ce6e941d3dabbfe6e Unity.TextMeshPro.dll:TMPro.TMP_Dropdown
+71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.Start
 71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationPlayableAsset
 06f0fef534ca4c1d6064fd77a26bf722 UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationTrack
 780e8f682b3221346c034a6712a0fd25 UnityEngine.Timeline.dll:UnityEngine.Timeline.AnimationPlayableAsset
@@ -246,7 +247,7 @@ fb6a1ea36b4f6ef5948d283d93760765 UnityEngine.GoogleAudioSpatializer.dll:UnityEng
 5b0391b7e3d9ea9db6c0a8fbd0ca23f6 UnityEngine.GoogleAudioSpatializer.dll:UnityEngine.Experimental.Audio.Google.GvrAudioSourceExtension
 c83c0b6f724ba1a6bdaac134c79cf882 Assembly-CSharp.dll:.OpponentMove
 39b34b713f98ed8b4dabd0d10448110a Assembly-CSharp.dll:.GameCorridor
-a419f9ca2116939204625134b797ebf1 Assembly-CSharp.dll:.ContanerId
+7255f1d33a9dc09a7f9cc88b34ef869b Assembly-CSharp.dll:.ContanerId
 3b760e6526e13f7504f59e210145899a Unity.TextMeshPro.dll:TMPro.TextMeshProUGUI
 7f89464a38a3d21f01ca98922942c09a Assembly-CSharp.dll:.EffectFireBall
 507174d46dacbc5fe45e28485db5dd1e Unity.Analytics.DataPrivacy.dll:UnityEngine.Analytics.DataPrivacyButton
@@ -254,6 +255,7 @@ a419f9ca2116939204625134b797ebf1 Assembly-CSharp.dll:.ContanerId
 d251bf88db6c95a6b1aa0b69298da9ef UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
 145ad94947ca1fdf43adfbe680494e71 Assembly-CSharp.dll:.CreateGame
 e9f0005c5caa72be4d42cc162679e775 Assembly-CSharp.dll:.Login
+71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.Corridor_Music
 d791aa6007fa3640be1164ea75bb087d Unity.TextMeshPro.dll:TMPro.TMP_StyleSheet
 df434544c9f7b33d1cc7e635b180d279 Unity.TextMeshPro.dll:TMPro.TextMeshPro
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:Leguar.TotalJSON.Examples.CreateAndModifyJSON
