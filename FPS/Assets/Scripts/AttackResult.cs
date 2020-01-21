@@ -52,8 +52,6 @@ public class AttackResult : MonoBehaviour
             Debug.Log("My Container is Hit");
             if(other.GetComponentInChildren<ContanerId>().containerId == FindObjectOfType<PlayerMove>().playerId)
             {
-                other.GetComponentInChildren<Slider>().value -= 0.2f;
-
                 Dictionary<string, string> data = new Dictionary<string, string>();
                 data["playerId"] = "" + playerId;
                 data["game_id"] = "" + game_id;

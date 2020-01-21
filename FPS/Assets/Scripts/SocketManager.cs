@@ -118,14 +118,13 @@ public class SocketManager : MonoBehaviour
         socket.On("container_hit", (SocketIOEvent e) => {
             Debug.Log("container_hit");
             var data = JSON.ParseString(e.data.ToString());
-            var om = GetComponentsInChildren<OpponentMove>();
+            var containers = FindObjectsOfType<ContanerId>();
             int pId = int.Parse(data["playerId"].CreateString().Trim(trim));
-            for (int i = 0; i < om.Length; i++)
+            for (int i = 0; i < containers.Length; i++)
             {
-                if (om[i].playerId == pId)
+                if (containers[i].containerId == pId)
                 {
-                    om[i].oppHit();
-                    break;
+                    containers[i].AttackContainerHP();
                 }
             }
         });
