@@ -13,6 +13,7 @@ public class ContanerId : MonoBehaviour
     ChickenSpawner chickenSpawner;
     PlayerMove playerMove;
     Score score;
+    
     void Start()
     {
         chickenSpawner = FindObjectOfType<ChickenSpawner>();
