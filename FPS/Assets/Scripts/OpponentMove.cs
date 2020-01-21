@@ -66,6 +66,22 @@ public class OpponentMove : MonoBehaviour
 
     }
 
+    public void oppDie()
+    {
+        anim.ResetTrigger("Die");
+        anim.SetTrigger("Die");
+        StartCoroutine(RefreshAfterSeconds(10f));
+    }
+
+    IEnumerator RefreshAfterSeconds(float time)
+    {
+        yield return new WaitForSeconds(time);
+        health = 100;
+        UpdateHealth(health);
+        anim.ResetTrigger("Alive");
+        anim.SetTrigger("Alive");
+    }
+
     public void oppWalk()
     {
         anim.SetBool("isWalking", true);

@@ -15,6 +15,8 @@ public class ContanerId : MonoBehaviour
     public int containerId;
     public int containerHP = 100;
 
+    public bool isDestroyed = false;
+
     ChickenSpawner chickenSpawner;
     PlayerMove playerMove;
     Score score;
@@ -35,11 +37,12 @@ public class ContanerId : MonoBehaviour
     // Update is called once per frame
     void Update() 
     {
-        if(containerHP == 0 && playerMove.playerId == containerId) // 자기 컨테이너만 파괴될때 처리
+        if(containerHP == 0 && playerMove.playerId == containerId && !isDestroyed) // 자기 컨테이너만 파괴될때 처리
         {
+            isDestroyed = true;
             chickenSpawner.RespawnChickens();
-            playerMove.playerRecord = 0;
-            score.ScoreUpdate();
+            //playerMove.playerRecord = 0;
+            //score.ScoreUpdate();
             StartCoroutine(RefreshAfterTime(15f));
         }
     }

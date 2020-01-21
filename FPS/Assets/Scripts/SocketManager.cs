@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using SocketIO;
 using Leguar.TotalJSON;
+using UnityEngine.SceneManagement;
 
 public class SocketManager : MonoBehaviour
 {
@@ -72,8 +73,46 @@ public class SocketManager : MonoBehaviour
                 //Debug.Log((int)cid[i]);
                 cs.CreateChicken((float)x[i], (float)z[i], (int)ry[i], (int)cid[i]);
             }
-
+            FindObjectOfType<ChickenSpawner>().chickenControllers = FindObjectsOfType<ChickenController>();
             FindObjectOfType<ChickenSpawner>().currentNumberOfChicken = maxNumberOfChicken;
+        });
+
+        socket.On("respawn_chickens", (SocketIOEvent e) => {
+            Debug.Log("respawn_chickens");
+            var data = JSON.ParseString(e.data.ToString());
+            var cs = GetComponent<ChickenSpawner>();
+            int pId = int.Parse(data["playerId"].CreateString().Trim(trim));
+
+            ArrayList x = (ArrayList)MyUtil.StringToObject(data["x"].CreateString().Trim(trim));
+            ArrayList z = (ArrayList)MyUtil.StringToObject(data["z"].CreateString().Trim(trim));
+            ArrayList ry = (ArrayList)MyUtil.StringToObject(data["ry"].CreateString().Trim(trim));
+            ArrayList cid = (ArrayList)MyUtil.StringToObject(data["cid"].CreateString().Trim(trim));
+
+            for (int i = 0; i < x.Count; i++)
+            {
+                foreach (ChickenController chickenController in cs.chickenControllers)
+                {
+                    if (chickenController.chickenId == (int)cid[i])
+                    {
+                        var spawnRotation = Quaternion.Euler(new Vector3(0.0f, (int)ry[i], 0.0f));
+                        chickenController.GetComponent<Transform>().position = new Vector3((float)x[i],15,(float)z[i]);
+                        chickenController.GetComponent<Transform>().rotation = spawnRotation;
+                        chickenController.RespawnChicken();
+                    }
+                }
+            }
+            Debug.Log("respawn_chickens 1");
+            if (FindObjectOfType<PlayerMove>().playerId == pId)
+            {
+                Debug.Log("respawn_chickens 2");
+                FindObjectOfType<PlayerMove>().playerRecord = 0;
+            }
+            else
+            {
+                Debug.Log("respawn_chickens 3");
+                FindObjectOfType<OpponentMove>().playerRecord = 0;
+            }
+            score.ScoreUpdate();
         });
 
         socket.On("move", (SocketIOEvent e) => {
@@ -139,6 +178,21 @@ public class SocketManager : MonoBehaviour
             }
         });
 
+        socket.On("dead", (SocketIOEvent e) => {
+            Debug.Log("dead");
+            var data = JSON.ParseString(e.data.ToString());
+            var om = GetComponentsInChildren<OpponentMove>();
+            int pId = int.Parse(data["playerId"].CreateString().Trim(trim));
+            for (int i = 0; i < om.Length; i++)
+            {
+                if (om[i].playerId == pId)
+                {
+                    om[i].oppDie();
+                    break;
+                }
+            }
+        });
+
         socket.On("container_restore", (SocketIOEvent e) => {
             Debug.Log("container_restore");
             var data = JSON.ParseString(e.data.ToString());
@@ -150,6 +204,7 @@ public class SocketManager : MonoBehaviour
                 {
                     containers[i].containerHP = 100;
                     containers[i].GetComponentInChildren<Slider>().value = 1;
+                    containers[i].isDestroyed = false;
                 }
             }
         });
@@ -263,6 +318,26 @@ public class SocketManager : MonoBehaviour
                 }
             }
 
+        });
+
+        socket.On("game_over", (SocketIOEvent e) => {
+            Debug.Log("game_over");
+            var data = JSON.ParseString(e.data.ToString());
+            int wId = int.Parse(data["winnerId"].CreateString().Trim(trim));
+            int playerId = FindObjectOfType<PlayerMove>().playerId;
+            if(playerId == wId)
+            {
+                PlayerPrefs.SetString("result","win");
+            }
+            else if (wId == 0)
+            {
+                PlayerPrefs.SetString("result", "tie");
+            }
+            else
+            {
+                PlayerPrefs.SetString("result", "lose");
+            }
+            SceneManager.LoadScene("WinOrDie");
         });
     }
 }

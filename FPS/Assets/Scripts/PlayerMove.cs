@@ -178,7 +178,28 @@ public class PlayerMove : MonoBehaviour
         timer += Time.deltaTime;
         resultSeconds = TimerSeconds - (int)timer;
         int min = resultSeconds / 60;
-        int seconds = resultSeconds - min;
+        int seconds = resultSeconds - min*60;
+
+        if(playerId == 1 && resultSeconds == 0)
+        {
+            Dictionary<string, string> data = new Dictionary<string, string>();
+            data["playerId"] = "" + playerId;
+            data["game_id"] = "" + game_id;
+
+            if(playerRecord > FindObjectOfType<OpponentMove>().playerRecord)
+            {
+                data["winnerId"] = "1";
+            }
+            else if (playerRecord < FindObjectOfType<OpponentMove>().playerRecord)
+            {
+                data["winnerId"] = "2";
+            }
+            else
+            {
+                data["winnerId"] = "0";
+            }
+            socket.Emit("game_over", new JSONObject(data));
+        }
 
         TextTimer.text = string.Format("{0:D2} : {1:D2}", min, seconds);
 
@@ -286,8 +307,15 @@ public class PlayerMove : MonoBehaviour
             }
         }
 
+        //사망정보
+
         if (health <= 0)
         {
+            Dictionary<string, string> data = new Dictionary<string, string>();
+            data["playerId"] = "" + playerId;
+            data["game_id"] = "" + game_id;
+            socket.Emit("dead", new JSONObject(data));
+
             anim.ResetTrigger("Die");
             anim.SetTrigger("Die");
             DarkImage.gameObject.SetActive(true);

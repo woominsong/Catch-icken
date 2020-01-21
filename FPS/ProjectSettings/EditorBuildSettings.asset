@@ -21,6 +21,9 @@ EditorBuildSettings:
     path: Assets/Scenes/GameCorridor.unity
     guid: 4768be75941ec0a4bb9d27de9505b19d
   - enabled: 1
+    path: Assets/Scenes/WinOrDie.unity
+    guid: 8e7b6a83f4d125b4e84f201cd680ccbb
+  - enabled: 1
     path: Assets/Scenes/Score.unity
     guid: fadc124050baf3841bb5432877ce18bf
   - enabled: 1

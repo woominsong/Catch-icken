@@ -15,7 +15,7 @@ public class ChickenSpawner : MonoBehaviour
     public int currentNumberOfChicken = 0;
 
     private SocketIOComponent socket;
-    ChickenController[] chickenControllers;
+    public ChickenController[] chickenControllers;
 
     Text textNum;
 
@@ -66,18 +66,6 @@ public class ChickenSpawner : MonoBehaviour
             z.Add(Random.Range(-25f, 20f));
             ry.Add(Random.Range(0, 180));
             cid.Add(i);
-            /*
-            var spawnPosition = new Vector3(
-                Random.Range(-71f, -28f),
-                15,
-                Random.Range(-25f, 20f));
-
-            var spawnRotation = Quaternion.Euler(new Vector3(0.0f, Random.Range(0, 180), 0.0f));
-            */
-            //var chicken = (GameObject)Instantiate(chickenPrefab, spawnPosition, spawnRotation);
-
-            //chicken.GetComponent<ChickenController>().chickenId = i;
-            //chicken.GetComponent<ChickenController>().chickenLive = true;
         }
 
         for (int i = needChickenNum / 2; i < needChickenNum; i++)
@@ -86,17 +74,6 @@ public class ChickenSpawner : MonoBehaviour
             z.Add(Random.Range(-70f, -25f));
             ry.Add(Random.Range(0, 180));
             cid.Add(i);
-            /*
-            var spawnPosition = new Vector3(
-                Random.Range(-28f, 15f),
-                15,
-                Random.Range(-70f, -25f));
-            var spawnRotation = Quaternion.Euler(new Vector3(0.0f, Random.Range(0, 180), 0.0f));
-            */
-            //var chicken = (GameObject)Instantiate(chickenPrefab, spawnPosition, spawnRotation);
-
-            //chicken.GetComponent<ChickenController>().chickenId = i;
-            //chicken.GetComponent<ChickenController>().chickenLive = true;
         }
 
         Debug.Log("spawn chicken: player id is "+playerId);
@@ -120,18 +97,25 @@ public class ChickenSpawner : MonoBehaviour
         var chicken = Instantiate(chickenPrefab, pos, Quaternion.Euler(rot));
         chicken.GetComponent<ChickenController>().chickenId = chickenId;
         chicken.GetComponent<ChickenController>().chickenLive = true;
-        
     }
 
     public void RespawnChickens()
     {
-        chickenControllers = FindObjectsOfType<ChickenController>();
+        ArrayList x = new ArrayList();
+        ArrayList z = new ArrayList();
+        ArrayList ry = new ArrayList();
+        ArrayList cid = new ArrayList();
 
         foreach (ChickenController chickenController in chickenControllers)
         {
             if(chickenController.chickenLive == false)
             {
-                var spawnPosition = new Vector3(
+                x.Add(Random.Range(-28f, 15f) + Random.Range(-71f, -28f));
+                z.Add(Random.Range(-70f, -25f) + Random.Range(-25f, 20f));
+                ry.Add(Random.Range(0, 180));
+                cid.Add(chickenController.chickenId);
+
+                /*var spawnPosition = new Vector3(
                 Random.Range(-28f, 15f),
                 15,
                 Random.Range(-70f, -25f))
@@ -139,13 +123,19 @@ public class ChickenSpawner : MonoBehaviour
                 new Vector3(
                 Random.Range(-71f, -28f),
                 15,
-                Random.Range(-25f, 20f)); 
-                var spawnRotation = Quaternion.Euler(new Vector3(0.0f, Random.Range(0, 180), 0.0f));
-                chickenController.GetComponent<Transform>().position = spawnPosition;
-                chickenController.GetComponent<Transform>().rotation = spawnRotation;
-                chickenController.RespawnChicken();
+                Random.Range(-25f, 20f));*/ 
             }
         }
+
+        Dictionary<string, string> data = new Dictionary<string, string>();
+        data["playerId"] = "" + playerId;
+        data["game_id"] = "" + game_id;
+        data["x"] = MyUtil.ObjectToString(x);
+        data["z"] = MyUtil.ObjectToString(z);
+        data["ry"] = MyUtil.ObjectToString(ry);
+        data["cid"] = MyUtil.ObjectToString(cid);
+        Debug.Log("emit respawn_chickens");
+        socket.Emit("respawn_chickens", new JSONObject(data));
     }
 
     // Update is called once per frame

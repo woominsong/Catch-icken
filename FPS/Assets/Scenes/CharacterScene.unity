@@ -2470,8 +2470,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ca361dbb0221cb4abce73b05bd8d518, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  socket: {fileID: 0}
+  playerId: 0
   containerId: 1
   containerHP: 100
+  isDestroyed: 0
 --- !u!143 &380893904
 CharacterController:
   m_ObjectHideFlags: 0
@@ -3270,6 +3273,7 @@ MonoBehaviour:
     type: 3}
   maxNumberOfChicken: 20
   currentNumberOfChicken: 0
+  chickenControllers: []
 --- !u!1 &542355108
 GameObject:
   m_ObjectHideFlags: 0
@@ -6338,7 +6342,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.5
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -9430,8 +9434,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ca361dbb0221cb4abce73b05bd8d518, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  socket: {fileID: 0}
+  playerId: 0
   containerId: 2
   containerHP: 100
+  isDestroyed: 0
 --- !u!143 &1638403088
 CharacterController:
   m_ObjectHideFlags: 0
@@ -12549,7 +12556,7 @@ PrefabInstance:
     - target: {fileID: 6538446725723531144, guid: 9befe3cb39725cf439942b3cd4d7156f,
         type: 3}
       propertyPath: TimerSeconds
-      value: 150
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6538446725723531147, guid: 9befe3cb39725cf439942b3cd4d7156f,
         type: 3}
