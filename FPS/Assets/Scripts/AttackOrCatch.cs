@@ -37,6 +37,15 @@ public class AttackOrCatch : MonoBehaviour
         rb.velocity = Quaternion.Euler(transform.rotation.eulerAngles) * new Vector3(0, 1, 1) * shootVelocity;
     }
 
+    public void ShootAttack(Vector3 shootStartPoint, Vector3 shootVelocity)
+    {
+        GameObject prefab = Resources.Load("projectile") as GameObject;
+        GameObject projectile = Instantiate(prefab) as GameObject;
+        projectile.transform.position = shootStartPoint;
+        Rigidbody rb = projectile.GetComponent<Rigidbody>();
+        rb.velocity = shootVelocity;
+    }
+
     public void ShootCatch(Vector3 shootStartPoint, float shootVelocity, int playerId)
     {
         GameObject prefab = Resources.Load("catchProjectile") as GameObject;
@@ -45,6 +54,16 @@ public class AttackOrCatch : MonoBehaviour
         projectile.transform.position = shootStartPoint;
         Rigidbody rb = projectile.GetComponent<Rigidbody>();
         rb.velocity = Quaternion.Euler(transform.rotation.eulerAngles) * new Vector3(0, 1, 1) * shootVelocity;
+    }
+
+    public void ShootCatch(Vector3 shootStartPoint, Vector3 shootVelocity, int playerId)
+    {
+        GameObject prefab = Resources.Load("catchProjectile") as GameObject;
+        prefab.GetComponent<EffectCatchBall>().playerId = playerId;
+        GameObject projectile = Instantiate(prefab) as GameObject;
+        projectile.transform.position = shootStartPoint;
+        Rigidbody rb = projectile.GetComponent<Rigidbody>();
+        rb.velocity = shootVelocity;
     }
     /*public Vector3 CalculatePosInTime(Vector3 vo, float time)
     {

@@ -71,6 +71,12 @@ public class OpponentMove : MonoBehaviour
         anim.SetBool("isWalking", false);
     }
 
+    public void oppAttack()
+    {
+        anim.ResetTrigger("attack");
+        anim.SetTrigger("attack");
+    }
+
     public void oppAttack(Vector3 shootStartPoint, float shootVelocity)
     {
         anim.ResetTrigger("attack");

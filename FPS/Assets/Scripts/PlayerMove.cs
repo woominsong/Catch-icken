@@ -196,7 +196,22 @@ public class PlayerMove : MonoBehaviour{
             attack = false;
             anim.ResetTrigger("attack");
             anim.SetTrigger("attack");
-            attackOrCatch.ShootAttack(shootStartPoint, shootVelocity);
+            //attackOrCatch.ShootAttack(shootStartPoint, shootVelocity);
+
+            Vector3 v = Quaternion.Euler(transform.rotation.eulerAngles) * new Vector3(0, 1, 1) * shootVelocity;
+
+            Debug.Log("v: "+v);
+            Dictionary<string, string> data = new Dictionary<string, string>();
+            data["playerId"] = "" + playerId;
+            data["game_id"] = "" + game_id;
+            data["x"] = "" + shootStartPoint.x;
+            data["y"] = "" + shootStartPoint.y;
+            data["z"] = "" + shootStartPoint.z;
+            data["vx"] = "" + v.x;
+            data["vy"] = "" + v.y;
+            data["vz"] = "" + v.z;
+            socket.Emit("attack", new JSONObject(data));
+
             shootVelocity = 0;
             for (int i = 0; i < lineSegment; i++)
             {
@@ -219,7 +234,20 @@ public class PlayerMove : MonoBehaviour{
             catchChicken = false;
             anim.ResetTrigger("attack");
             anim.SetTrigger("attack");
-            attackOrCatch.ShootCatch(shootStartPoint, shootVelocity, playerId);
+            //attackOrCatch.ShootCatch(shootStartPoint, shootVelocity, playerId);
+
+            Vector3 v = Quaternion.Euler(transform.rotation.eulerAngles) * new Vector3(0, 1, 1) * shootVelocity;
+            Dictionary<string, string> data = new Dictionary<string, string>();
+            data["playerId"] = "" + playerId;
+            data["game_id"] = "" + game_id;
+            data["x"] = "" + shootStartPoint.x;
+            data["y"] = "" + shootStartPoint.y;
+            data["z"] = "" + shootStartPoint.z;
+            data["vx"] = "" + v.x;
+            data["vy"] = "" + v.y;
+            data["vz"] = "" + v.z;
+            socket.Emit("catch", new JSONObject(data));
+
             shootVelocity = 0;
             for (int i = 0; i < lineSegment; i++)
             {
@@ -343,7 +371,7 @@ public class PlayerMove : MonoBehaviour{
         }
 
         cnt++;
-        if(cnt%30 == 0)
+        if(cnt%10 == 9)
         {
             cnt = 0;
             fixPosition();

@@ -11,10 +11,15 @@ public class SocketManager : MonoBehaviour
     [HideInInspector]
     public SocketIOComponent socket;
 
+    //for Attack class
+    AttackOrCatch attackOrCatch;
+
     private char[] trim = { '"' };
 
     void Start()
     {
+        attackOrCatch = GetComponentInChildren<AttackOrCatch>();
+
         GameObject go = GameObject.Find("SocketIO");
         socket = go.GetComponent<SocketIOComponent>();
 
@@ -66,6 +71,42 @@ public class SocketManager : MonoBehaviour
                 }
             }
 
+        });
+
+        socket.On("attack", (SocketIOEvent e) => {
+            Debug.Log("attack");
+            var data = JSON.ParseString(e.data.ToString());
+            var om = GetComponentsInChildren<OpponentMove>();
+            int pId = int.Parse(data["playerId"].CreateString().Trim(trim));
+            for (int i = 0; i < om.Length; i++)
+            {
+                //Debug.Log("move5");
+                if (om[i].playerId == pId)
+                {
+                    om[i].oppAttack();
+                    break;
+                }
+            }
+            //Debug.Log("attack1");
+            Vector3 pos = new Vector3(float.Parse(data["x"].CreateString().Trim(trim)), float.Parse(data["y"].CreateString().Trim(trim)), float.Parse(data["z"].CreateString().Trim(trim)));
+            //Debug.Log(data["vx"]);
+            //Debug.Log(data["vx"].CreateString());
+            //Debug.Log(data["vx"].CreateString().Trim(trim));
+            //Debug.Log(float.Parse(data["vx"].CreateString().Trim(trim)));
+            Vector3 v = new Vector3(float.Parse(data["vx"].CreateString().Trim(trim)), float.Parse(data["vy"].CreateString().Trim(trim)), float.Parse(data["vz"].CreateString().Trim(trim)));
+            //Debug.Log("attack3");
+            //Debug.Log("attack at ("+pos.x+","+pos.y+","+pos.z+ ") with velocity (" + v.x + "," + v.y + "," + v.z + ")");
+            attackOrCatch.ShootAttack(pos, v);
+        });
+
+        socket.On("catch", (SocketIOEvent e) => {
+            Debug.Log("catch");
+            var data = JSON.ParseString(e.data.ToString());
+            Vector3 pos = new Vector3(float.Parse(data["x"].CreateString().Trim(trim)), float.Parse(data["y"].CreateString().Trim(trim)), float.Parse(data["z"].CreateString().Trim(trim)));
+            Vector3 v = new Vector3(float.Parse(data["vx"].CreateString().Trim(trim)), float.Parse(data["vy"].CreateString().Trim(trim)), float.Parse(data["vz"].CreateString().Trim(trim)));
+            int pid = int.Parse(data["playerId"].CreateString().Trim(trim));
+            Debug.Log("Player "+pid+" attack at (" + pos.x + "," + pos.y + "," + pos.z + ") with velocity (" + v.x + "," + v.y + "," + v.z + ")");
+            attackOrCatch.ShootCatch(pos, v, pid);
         });
 
         socket.On("player_walk", (SocketIOEvent e) => {
