@@ -4,8 +4,11 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using SocketIO;
 using Leguar.TotalJSON;
+using UnityEngine.UI;
+using System.Timers;
 
-public class PlayerMove : MonoBehaviour{
+public class PlayerMove : MonoBehaviour
+{
 
     public int playerId;
     private int game_id;
@@ -73,16 +76,26 @@ public class PlayerMove : MonoBehaviour{
 
     //socket
     private SocketIOComponent socket;
-    
+
     //for Energy
     public float health;
 
     public HealthBar healthBar;
+    public Image DarkImage;
+
+    //timer
+    public Text TextTimer;
+    public int TimerSeconds;
+    private float timer;
+    int resultSeconds;
 
 
     private void Start()
     {
-        // Initialize player position	
+
+        DarkImage.gameObject.SetActive(false);
+
+        // Initialize player position   
         playerId = PlayerPrefs.GetInt("playerId");
         game_id = PlayerPrefs.GetInt("game_id");
         if (playerId == 1)
@@ -116,12 +129,13 @@ public class PlayerMove : MonoBehaviour{
 
         joystick = FindObjectOfType<Joystick>();
         joybutton[] joybuttons = FindObjectsOfType<joybutton>() as joybutton[];
-        foreach(joybutton j in joybuttons)
+        foreach (joybutton j in joybuttons)
         {
-            if(j.name == "attackJoyButton")
+            if (j.name == "attackJoyButton")
             {
                 attackJoyButton = j;
-            }else if(j.name == "catchJoyButton")
+            }
+            else if (j.name == "catchJoyButton")
             {
                 catchJoyButton = j;
             }
@@ -159,7 +173,17 @@ public class PlayerMove : MonoBehaviour{
 
     private void Update()
     {
-        // Do not start until all players are successfully connected to the server	
+        //Timer
+
+        timer += Time.deltaTime;
+        resultSeconds = TimerSeconds - (int)timer;
+        int min = resultSeconds / 60;
+        int seconds = resultSeconds - min;
+
+        TextTimer.text = string.Format("{0:D2} : {1:D2}", min, seconds);
+
+
+        // Do not start until all players are successfully connected to the server   
         if (!playersReady) return;
 
         // Set animation
@@ -186,15 +210,15 @@ public class PlayerMove : MonoBehaviour{
 
         if (!attack && attackJoyButton.pressed)
         {
-            attack = true;       
+            attack = true;
         }
 
         if (attack && attackJoyButton.pressed)
         {
             lineVisual.SetColors(Color.red, Color.red);
 
-            shootVelocity += 0.4f;     
-            VisualizeLine(Quaternion.Euler(transform.rotation.eulerAngles) * new Vector3(0, 1, 1) * shootVelocity);        
+            shootVelocity += 0.4f;
+            VisualizeLine(Quaternion.Euler(transform.rotation.eulerAngles) * new Vector3(0, 1, 1) * shootVelocity);
         }
 
         if (attack && !attackJoyButton.pressed)
@@ -206,7 +230,7 @@ public class PlayerMove : MonoBehaviour{
 
             Vector3 v = Quaternion.Euler(transform.rotation.eulerAngles) * new Vector3(0, 1, 1) * shootVelocity;
 
-            Debug.Log("v: "+v);
+            Debug.Log("v: " + v);
             Dictionary<string, string> data = new Dictionary<string, string>();
             data["playerId"] = "" + playerId;
             data["game_id"] = "" + game_id;
@@ -225,17 +249,18 @@ public class PlayerMove : MonoBehaviour{
             }
         }
 
-        if(!catchChicken && catchJoyButton.pressed)
+        if (!catchChicken && catchJoyButton.pressed)
         {
             catchChicken = true;
         }
-        if(catchChicken && catchJoyButton.pressed)
+        if (catchChicken && catchJoyButton.pressed)
         {
             lineVisual.SetColors(Color.blue, Color.blue);
 
             shootVelocity += 0.2f;
             VisualizeLine(Quaternion.Euler(transform.rotation.eulerAngles) * new Vector3(0, 1, 1) * shootVelocity);
-        }if(catchChicken && !catchJoyButton.pressed)
+        }
+        if (catchChicken && !catchJoyButton.pressed)
         {
             catchChicken = false;
             anim.ResetTrigger("attack");
@@ -261,8 +286,30 @@ public class PlayerMove : MonoBehaviour{
             }
         }
 
+        if (health <= 0)
+        {
+            anim.ResetTrigger("Die");
+            anim.SetTrigger("Die");
+            DarkImage.gameObject.SetActive(true);
+            joystick.gameObject.SetActive(false);
+            attackJoyButton.gameObject.SetActive(false);
+            catchJoyButton.gameObject.SetActive(false);
+            StartCoroutine(RefreshAfterSeconds(10f));
+        }
 
+    }
 
+    IEnumerator RefreshAfterSeconds(float time)
+    {
+        yield return new WaitForSeconds(time);
+        health = 100;
+        healthBar.UpdateEnergybar(100f);
+        DarkImage.gameObject.SetActive(false);
+        joystick.gameObject.SetActive(true);
+        attackJoyButton.gameObject.SetActive(true);
+        catchJoyButton.gameObject.SetActive(true);
+        anim.ResetTrigger("Alive");
+        anim.SetTrigger("Alive");
     }
 
     private void fixPosition()
@@ -303,21 +350,21 @@ public class PlayerMove : MonoBehaviour{
 
     private void LateUpdate()
     {
-        // Do not start until all players are successfully connected to the server	
+        // Do not start until all players are successfully connected to the server   
         if (!playersReady) return;
 
         touchManager();
-        
+
         if (screenTouch != -1)
         {
             Touch touch = Input.GetTouch(screenTouch);
 
             if (touch.phase == TouchPhase.Moved)
             {
-                Debug.Log("d-mX = "+ touch.deltaPosition.x * rotSpeedX);
-                Debug.Log("d-mX = "+ touch.deltaPosition.y * rotSpeedY);
+                Debug.Log("d-mX = " + touch.deltaPosition.x * rotSpeedX);
+                Debug.Log("d-mX = " + touch.deltaPosition.y * rotSpeedY);
                 mX += touch.deltaPosition.x * rotSpeedX / 300;
-                mY += - touch.deltaPosition.y  * rotSpeedY / 300;
+                mY += -touch.deltaPosition.y * rotSpeedY / 300;
             }
         }
 
@@ -364,7 +411,7 @@ public class PlayerMove : MonoBehaviour{
         Vector3 posDisp = transform.position;
         cc.Move(moveDir * currentSpeed * Time.deltaTime);
         posDisp = transform.position - posDisp;
-        // Send data to socket: Displacement and Rotation	
+        // Send data to socket: Displacement and Rotation   
         if (posDisp.x != 0 || posDisp.y != 0 || posDisp.z != 0 || rotDisp.y != 0)
         {
             Dictionary<string, string> data = new Dictionary<string, string>();
@@ -379,7 +426,7 @@ public class PlayerMove : MonoBehaviour{
         }
 
         cnt++;
-        if(cnt%10 == 9)
+        if (cnt % 10 == 9)
         {
             cnt = 0;
             fixPosition();

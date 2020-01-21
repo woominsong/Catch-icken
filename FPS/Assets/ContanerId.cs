@@ -18,6 +18,7 @@ public class ContanerId : MonoBehaviour
     ChickenSpawner chickenSpawner;
     PlayerMove playerMove;
     Score score;
+    
     void Start()
     {
         playerId = PlayerPrefs.GetInt("playerId");

@@ -35,7 +35,6 @@ public class ChickenSpawner : MonoBehaviour
         //}
         //SpawnChickens();
         
-        chickenControllers = FindObjectsOfType<ChickenController>();
         
         Text[] texts = FindObjectOfType<Canvas>().GetComponentsInChildren<Text>();
         foreach (Text t in texts)
@@ -126,7 +125,9 @@ public class ChickenSpawner : MonoBehaviour
 
     public void RespawnChickens()
     {
-        foreach(ChickenController chickenController in chickenControllers)
+        chickenControllers = FindObjectsOfType<ChickenController>();
+
+        foreach (ChickenController chickenController in chickenControllers)
         {
             if(chickenController.chickenLive == false)
             {
@@ -138,7 +139,7 @@ public class ChickenSpawner : MonoBehaviour
                 new Vector3(
                 Random.Range(-71f, -28f),
                 15,
-                Random.Range(-25f, 20f)); ;
+                Random.Range(-25f, 20f)); 
                 var spawnRotation = Quaternion.Euler(new Vector3(0.0f, Random.Range(0, 180), 0.0f));
                 chickenController.GetComponent<Transform>().position = spawnPosition;
                 chickenController.GetComponent<Transform>().rotation = spawnRotation;
