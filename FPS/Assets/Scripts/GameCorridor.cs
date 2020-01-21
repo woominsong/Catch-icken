@@ -89,8 +89,7 @@ public class GameCorridor : MonoBehaviour{
 
     public void createGame()
     {
-        Debug.Log("createGame called");
-        socket.Emit("rm_list", new JSONObject(new Dictionary<string, string>()));
+        socket.Emit("rm_list");
     }
 
 }

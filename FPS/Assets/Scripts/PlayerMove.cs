@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using SocketIO;
-using Leguar.TotalJSON;
 
 public class PlayerMove : MonoBehaviour{
 
@@ -80,22 +79,9 @@ public class PlayerMove : MonoBehaviour{
 
     public HealthBar healthBar;
 
+
     private void Start()
     {
-        // Initialize player position
-        playerId = PlayerPrefs.GetInt("playerId");
-        game_id = PlayerPrefs.GetInt("game_id");
-
-        if(playerId == 1) {
-            transform.position = GameSettings.p1StartPos;
-            transform.rotation = GameSettings.p1StartRot;
-        }
-        else
-        {
-            transform.position = GameSettings.p2StartPos;
-            transform.rotation = GameSettings.p2StartRot;
-        }
-
         health = 100;
 
         // initialize values
@@ -130,6 +116,9 @@ public class PlayerMove : MonoBehaviour{
         screenTouch = -1;
         wasOverUI = true;
 
+        GameObject go = GameObject.Find("SocketIO");
+        socket = go.GetComponent<SocketIOComponent>();
+
         attackOrCatch = GetComponent<AttackOrCatch>();
 
         lineVisual = GetComponent<LineRenderer>();
@@ -158,9 +147,6 @@ public class PlayerMove : MonoBehaviour{
 
     private void Update()
     {
-        // Do not start until all players are successfully connected to the server
-        if (!playersReady) return;
-
         // Set animation
         if (joystick.pressed && !isWalking)
         {
@@ -185,7 +171,7 @@ public class PlayerMove : MonoBehaviour{
 
         if (!attack && attackJoyButton.pressed)
         {
-            attack = true;
+            attack = true;       
         }
 
         if (attack && attackJoyButton.pressed)
@@ -259,6 +245,9 @@ public class PlayerMove : MonoBehaviour{
                 lineVisual.SetPosition(i, Vector3.zero);
             }
         }
+
+
+
     }
 
     private void fixPosition()
@@ -299,9 +288,6 @@ public class PlayerMove : MonoBehaviour{
 
     private void LateUpdate()
     {
-        // Do not start until all players are successfully connected to the server
-        if (!playersReady) return;
-
         touchManager();
         
         if (screenTouch != -1)
@@ -337,9 +323,7 @@ public class PlayerMove : MonoBehaviour{
         // Rotate the camera on its X axis for up / down camera movement.
         playerCamera.transform.localEulerAngles = new Vector3(mY, 0f, 0f);
         // Rotate the player's body on its Y axis for left / right camera movement.
-        Vector3 rotDisp = transform.eulerAngles;
         transform.eulerAngles = new Vector3(0f, mX, 0f);
-        rotDisp = transform.eulerAngles - rotDisp;
 
         // Get Hor and Ver input.
         //float hor = Input.GetAxis("Horizontal");
@@ -354,23 +338,22 @@ public class PlayerMove : MonoBehaviour{
 
         // Get new move position based off input.
         Vector3 moveDir = (transform.right * hor) + (transform.forward * ver) - (transform.up * 0.8f);
-
+        
         // Move CharController. 
         // .Move will not apply gravity, use SimpleMove if you want gravity.
-        Vector3 posDisp = transform.position;
+        var beforePos = transform.position;
         cc.Move(moveDir * currentSpeed * Time.deltaTime);
-        posDisp = transform.position - posDisp;
+        var afterPos = transform.position;
+        Vector3 displacement = afterPos - beforePos;
 
-        // Send data to socket: Displacement and Rotation
-        if (posDisp.x != 0 || posDisp.y != 0 || posDisp.z != 0 || rotDisp.y != 0)
+        // Send data to socket
+        if (displacement.x != 0 || displacement.y != 0 || displacement.z != 0)
         {
             Dictionary<string, string> data = new Dictionary<string, string>();
             data["playerId"] = "" + playerId;
-            data["game_id"] = "" + game_id;
-            data["x"] = "" + posDisp.x;
-            data["y"] = "" + posDisp.y;
-            data["z"] = "" + posDisp.z;
-            data["ry"] = "" + rotDisp.y;
+            data["x"] = "" + displacement.x;
+            data["y"] = "" + displacement.y;
+            data["z"] = "" + displacement.z;
 
             socket.Emit("move", new JSONObject(data));
         }

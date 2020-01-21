@@ -26,22 +26,19 @@ public class CatchResult : MonoBehaviour
         var me = FindObjectOfType<PlayerMove>();
         var opponent = FindObjectOfType<OpponentMove>();
 
-        if (me.playerId == 2)
+        if (other.tag == "Chicken")
         {
-            if (other.tag == "Chicken")
+
+            if (me.playerId == playerId)
             {
-                other.gameObject.SetActive(false);
-
-                if (me.playerId == playerId)
-                {
-                    me.playerRecord += 1;
-                }
-                if (opponent.playerId == playerId)
-                {
-                    opponent.playerRecord += 1;
-                }
-
+                other.gameObject.GetComponent<ChickenController>().CatchChicken();
+                me.playerRecord += 1;
                 score.ScoreUpdate();
+
+                //자기가 catch한 치킨에 대해서만 정보처리(
+                //1. 치킨 없애는 함수 실행
+                //2. 자신의 점수 올림
+                //3. score update
             }
         }
     }

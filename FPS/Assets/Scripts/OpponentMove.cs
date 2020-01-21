@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class OpponentMove : MonoBehaviour
 {
+    [SerializeField]
     public int playerId;
-    private int game_id;
     public int playerRecord;
 
     // Player move variables.
@@ -70,7 +70,6 @@ public class OpponentMove : MonoBehaviour
     {
         anim.SetBool("isWalking", true);
     }
-
     public void oppIdle()
     {
         anim.SetBool("isWalking", false);
@@ -81,7 +80,6 @@ public class OpponentMove : MonoBehaviour
         anim.ResetTrigger("attack");
         anim.SetTrigger("attack");
     }
-
     public void oppAttack(Vector3 shootStartPoint, float shootVelocity)
     {
         anim.ResetTrigger("attack");
@@ -89,10 +87,9 @@ public class OpponentMove : MonoBehaviour
         m_attack.ShootAttack(shootStartPoint, shootVelocity);
     }
 
-    public void oppMove(Vector3 displacement, float ry)
+    public void oppMove(Vector3 displacement)
     {
         cc.Move(displacement);
-        transform.eulerAngles += new Vector3(0,ry,0);
     }
 
     public void oppHit()

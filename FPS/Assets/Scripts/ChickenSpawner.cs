@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using SocketIO;
+using UnityEngine.UI;
 
 public class ChickenSpawner : MonoBehaviour
 {
@@ -9,11 +10,14 @@ public class ChickenSpawner : MonoBehaviour
     private int game_id;
     public GameObject chickenPrefab;
 
-    public int numberOfChicken = 20;
+    public int maxNumberOfChicken = 20;
 
     public int currentNumberOfChicken = 0;
 
     private SocketIOComponent socket;
+    ChickenController[] chickenControllers;
+
+    Text textNum;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +32,23 @@ public class ChickenSpawner : MonoBehaviour
         {
             SpawnChickens();
         }*/
+        //SpawnChickens();
+        
+        //chickenControllers = FindObjectsOfType<ChickenController>();
+        
+        Text[] texts = FindObjectOfType<Canvas>().GetComponentsInChildren<Text>();
+        foreach (Text t in texts)
+        {
+            if(t.name == "ChickenNumber")
+            {
+                textNum = t;
+            }
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        textNum.text = currentNumberOfChicken.ToString();
     }
 
     public void SpawnChickens()
@@ -39,6 +60,7 @@ public class ChickenSpawner : MonoBehaviour
         ArrayList ry = new ArrayList();
         ArrayList cid = new ArrayList();
 
+        var needChickenNum = maxNumberOfChicken - currentNumberOfChicken;
         for (int i = 0; i < needChickenNum / 2; i++)
         {
             x.Add(Random.Range(-71f, -28f));
@@ -89,6 +111,7 @@ public class ChickenSpawner : MonoBehaviour
         data["cid"] = MyUtil.ObjectToString(cid);
         Debug.Log("emit spawn_chickens");
         socket.Emit("spawn_chickens", new JSONObject(data));
+        currentNumberOfChicken = maxNumberOfChicken;
     }
 
     public void CreateChicken(float x, float z, int ry, int chickenId)
@@ -99,9 +122,31 @@ public class ChickenSpawner : MonoBehaviour
         var chicken = Instantiate(chickenPrefab, pos, Quaternion.Euler(rot));
         chicken.GetComponent<ChickenController>().chickenId = chickenId;
         chicken.GetComponent<ChickenController>().chickenLive = true;
+        
     }
 
-
+    public void RespawnChickens()
+    {
+        foreach(ChickenController chickenController in chickenControllers)
+        {
+            if(chickenController.chickenLive == false)
+            {
+                var spawnPosition = new Vector3(
+                Random.Range(-28f, 15f),
+                15,
+                Random.Range(-70f, -25f))
+                +
+                new Vector3(
+                Random.Range(-71f, -28f),
+                15,
+                Random.Range(-25f, 20f)); ;
+                var spawnRotation = Quaternion.Euler(new Vector3(0.0f, Random.Range(0, 180), 0.0f));
+                chickenController.GetComponent<Transform>().position = spawnPosition;
+                chickenController.GetComponent<Transform>().rotation = spawnRotation;
+                chickenController.RespawnChicken();
+            }
+        }
+    }
 
     // Update is called once per frame
     void Update()
