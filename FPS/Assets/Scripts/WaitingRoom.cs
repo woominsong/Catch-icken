@@ -83,35 +83,12 @@ public class WaitingRoom : MonoBehaviour
 
         socket.On("exit", (SocketIOEvent e) =>
         {
-            Dictionary<string, string> send_data = new Dictionary<string, string>();
-            send_data["tag"] = "exit";
-            socket.Emit("rm_list", new JSONObject(send_data));
-        });
-
-        socket.On("start_game", (SocketIOEvent e) =>
-        {
-            onGameStart();
+            socket.Emit("rm_list");
         });
 
         socket.On("removed", (SocketIOEvent e) =>
         {
-            string tag = JSON.ParseString(e.data.ToString())["tag"].CreateString().Trim(trim);
-            if (tag.Equals("exit"))
-            {
-                SceneManager.LoadScene("GameCorridor");
-            }
-            else if (tag.Equals("start"))
-            {
-                Dictionary<string, string> send_data = new Dictionary<string, string>();
-                send_data["game_id"] = PlayerPrefs.GetInt("game_id").ToString();
-                socket.Emit("start_game", new JSONObject(send_data));
-
-                SceneManager.LoadScene("CharacterScene");
-            }
-            else
-            {
-                Debug.Log("Weird tag: "+tag);
-            }
+            SceneManager.LoadScene("GameCorridor");
         });
     }
 
@@ -130,14 +107,5 @@ public class WaitingRoom : MonoBehaviour
             send_data["client_id"] = PlayerPrefs.GetInt("client_id").ToString();
             socket.Emit("exit_game", new JSONObject(send_data));
         }
-    }
-
-    public void onGameStart()
-    {
-        if (!canStart) return;
-
-        Dictionary<string, string> send_data = new Dictionary<string, string>();
-        send_data["tag"] = "start";
-        socket.Emit("rm_list", new JSONObject(send_data));
     }
 }
