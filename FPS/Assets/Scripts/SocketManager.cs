@@ -21,6 +21,8 @@ public class SocketManager : MonoBehaviour
 
     void Start()
     {
+        Corridor_Music.Instance.gameObject.GetComponent<AudioSource>().Stop();
+
         attackOrCatch = GetComponentInChildren<AttackOrCatch>();
         score = FindObjectOfType<Score>();
 
