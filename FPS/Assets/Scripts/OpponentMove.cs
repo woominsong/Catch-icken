@@ -18,13 +18,18 @@ public class OpponentMove : MonoBehaviour
     //for Attack class
     AttackOrCatch m_attack;
 
+    //for Energy
+    public float health;
     private Slider healthSlider;
     
+
     private void Start()
     {
         // Initialize player position
         playerId = PlayerPrefs.GetInt("playerId");
         game_id = PlayerPrefs.GetInt("game_id");
+        
+        health = 100;
 
         if (playerId == 1)
         {
@@ -88,6 +93,12 @@ public class OpponentMove : MonoBehaviour
     {
         cc.Move(displacement);
         transform.eulerAngles += new Vector3(0,ry,0);
+    }
+
+    public void oppHit()
+    {
+        health -= 20;
+        UpdateHealth(health);
     }
 
 }

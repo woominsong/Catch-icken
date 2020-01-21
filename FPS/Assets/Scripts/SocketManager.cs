@@ -38,6 +38,35 @@ public class SocketManager : MonoBehaviour
             socket.Emit("game_ready", new JSONObject(send_data));
         });
 
+        socket.On("spawn_chickens", (SocketIOEvent e) => {
+            Debug.Log("spawn_chickens");
+            var data = JSON.ParseString(e.data.ToString());
+            var cs = GetComponent<ChickenSpawner>();
+            int pId = int.Parse(data["playerId"].CreateString().Trim(trim));
+
+            Debug.Log("spawn_chickens 1");
+            ArrayList x = (ArrayList)MyUtil.StringToObject(data["x"].CreateString().Trim(trim));
+            Debug.Log("spawn_chickens 2");
+            ArrayList z = (ArrayList)MyUtil.StringToObject(data["z"].CreateString().Trim(trim));
+            Debug.Log("spawn_chickens 3");
+            ArrayList ry = (ArrayList)MyUtil.StringToObject(data["ry"].CreateString().Trim(trim));
+            Debug.Log("spawn_chickens 4");
+            ArrayList cid = (ArrayList)MyUtil.StringToObject(data["cid"].CreateString().Trim(trim));
+            Debug.Log("spawn_chickens 5");
+
+            Debug.Log(x.Count);
+
+            for (int i = 0; i < x.Count; i++)
+            {
+                Debug.Log("create:");
+                Debug.Log((float)x[i]);
+                Debug.Log((float)z[i]);
+                Debug.Log((int)ry[i]);
+                Debug.Log((int)cid[i]);
+                cs.CreateChicken((float)x[i], (float)z[i], (int)ry[i], (int)cid[i]);
+            }
+        });
+
         socket.On("move", (SocketIOEvent e) => {
             Debug.Log("move");
             var data = JSON.ParseString(e.data.ToString());
@@ -71,6 +100,36 @@ public class SocketManager : MonoBehaviour
                 }
             }
 
+        });
+
+        socket.On("player_hit", (SocketIOEvent e) => {
+            Debug.Log("player_hit");
+            var data = JSON.ParseString(e.data.ToString());
+            var om = GetComponentsInChildren<OpponentMove>();
+            int pId = int.Parse(data["playerId"].CreateString().Trim(trim));
+            for (int i = 0; i < om.Length; i++)
+            {
+                if (om[i].playerId == pId)
+                {
+                    om[i].oppHit();
+                    break;
+                }
+            }
+        });
+
+        socket.On("container_hit", (SocketIOEvent e) => {
+            Debug.Log("container_hit");
+            var data = JSON.ParseString(e.data.ToString());
+            var om = GetComponentsInChildren<OpponentMove>();
+            int pId = int.Parse(data["playerId"].CreateString().Trim(trim));
+            for (int i = 0; i < om.Length; i++)
+            {
+                if (om[i].playerId == pId)
+                {
+                    om[i].oppHit();
+                    break;
+                }
+            }
         });
 
         socket.On("attack", (SocketIOEvent e) => {
@@ -146,35 +205,5 @@ public class SocketManager : MonoBehaviour
             }
 
         });
-
-        socket.On("spawn_chickens", (SocketIOEvent e) => {
-            Debug.Log("spawn_chickens");
-            var data = JSON.ParseString(e.data.ToString());
-            var cs = GetComponent<ChickenSpawner>();
-            int pId = int.Parse(data["playerId"].CreateString().Trim(trim));
-
-            Debug.Log("spawn_chickens 1");
-            ArrayList x = (ArrayList)MyUtil.StringToObject(data["x"].CreateString().Trim(trim));
-            Debug.Log("spawn_chickens 2");
-            ArrayList z = (ArrayList)MyUtil.StringToObject(data["z"].CreateString().Trim(trim));
-            Debug.Log("spawn_chickens 3");
-            ArrayList ry = (ArrayList)MyUtil.StringToObject(data["ry"].CreateString().Trim(trim));
-            Debug.Log("spawn_chickens 4");
-            ArrayList cid = (ArrayList)MyUtil.StringToObject(data["cid"].CreateString().Trim(trim));
-            Debug.Log("spawn_chickens 5");
-
-            Debug.Log(x.Count);
-
-            for (int i=0; i<x.Count; i++)
-            {
-                Debug.Log("create:");
-                Debug.Log((float)x[i]);
-                Debug.Log((float)z[i]);
-                Debug.Log((int)ry[i]);
-                Debug.Log((int)cid[i]);
-                cs.CreateChicken((float)x[i], (float)z[i], (int)ry[i], (int)cid[i]);
-            }
-        });
     }
-
 }

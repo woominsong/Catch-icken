@@ -7486,7 +7486,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: 40dd8d8eeb960c347b6f8ae20601a71c, type: 3}
       propertyPath: m_Name
-      value: Container (1)
+      value: Container 2
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 40dd8d8eeb960c347b6f8ae20601a71c, type: 3}
       propertyPath: m_TagString
@@ -7672,7 +7672,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: 40dd8d8eeb960c347b6f8ae20601a71c, type: 3}
       propertyPath: m_Name
-      value: Container
+      value: Container 1
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 40dd8d8eeb960c347b6f8ae20601a71c, type: 3}
       propertyPath: m_TagString
