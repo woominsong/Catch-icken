@@ -93,10 +93,12 @@ public class PlayerMove : MonoBehaviour
     [SerializeField]
     Audio audio;
 
+    //color
+    public Material material;
+    Renderer rend;
+
     private void Start()
     {
-        //audio.game.Play();
-
         DarkImage.gameObject.SetActive(false);
 
         // Initialize player position   
@@ -112,6 +114,15 @@ public class PlayerMove : MonoBehaviour
             transform.position = GameSettings.p2StartPos;
             transform.rotation = GameSettings.p2StartRot;
         }
+
+        rend = GetComponentInChildren<SkinnedMeshRenderer>();
+        rend.enabled = true;
+
+        if (playerId == 2)
+        {
+            rend.material = material;
+        }
+        //color
 
 
         health = 100;
