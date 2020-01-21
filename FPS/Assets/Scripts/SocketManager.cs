@@ -13,12 +13,14 @@ public class SocketManager : MonoBehaviour
 
     //for Attack class
     AttackOrCatch attackOrCatch;
+    private Score score;
 
     private char[] trim = { '"' };
 
     void Start()
     {
         attackOrCatch = GetComponentInChildren<AttackOrCatch>();
+        score = FindObjectOfType<Score>();
 
         GameObject go = GameObject.Find("SocketIO");
         socket = go.GetComponent<SocketIOComponent>();
@@ -127,6 +129,43 @@ public class SocketManager : MonoBehaviour
                     containers[i].AttackContainerHP();
                 }
             }
+        });
+
+        socket.On("chicken_hit", (SocketIOEvent e) => {
+            Debug.Log("chicken_hit");
+            var data = JSON.ParseString(e.data.ToString());
+            Debug.Log("chicken_hit 1");
+            var chickens = FindObjectsOfType<ChickenController>();
+            Debug.Log("chicken_hit 2");
+            var om = GetComponentsInChildren<OpponentMove>();
+            Debug.Log("chicken_hit 3");
+            int pId = int.Parse(data["playerId"].CreateString().Trim(trim));
+            Debug.Log("chicken_hit 4");
+            int cId = int.Parse(data["chickenId"].CreateString().Trim(trim));
+            Debug.Log("chicken_hit 5");
+            for (int i = 0; i < chickens.Length; i++)
+            {
+                Debug.Log("chicken_hit 6");
+                if (chickens[i].chickenId == pId)
+                {
+                    Debug.Log("chicken_hit 7");
+                    chickens[i].CatchChicken();
+                    Debug.Log("chicken_hit 10");
+                    break;
+                }
+            }
+            for (int i = 0; i < om.Length; i++)
+            {
+                Debug.Log("chicken_hit 8");
+                if (om[i].playerId == pId)
+                {
+                    Debug.Log("chicken_hit 9");
+                    om[i].playerRecord += 1;
+                    score.ScoreUpdate();
+                    break;
+                }
+            }
+
         });
 
         socket.On("attack", (SocketIOEvent e) => {

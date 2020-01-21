@@ -66,7 +66,6 @@ public class PlayerMove : MonoBehaviour{
     [HideInInspector]
     public Vector3 shootStartPoint;
 
-
     //attack trajectory
     LineRenderer lineVisual;
     [HideInInspector]

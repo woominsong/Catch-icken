@@ -29,7 +29,7 @@ public class ChickenController : MonoBehaviour
     {
         cc.Move(-transform.up * 0.8f);
 
-        timer += Time.deltaTime;
+        /*timer += Time.deltaTime;
         if(timer < newTarget)
         {
             cc.Move(transform.forward * 0.02f);
@@ -39,7 +39,7 @@ public class ChickenController : MonoBehaviour
             var tmp = gameObject.GetComponent<Transform>().rotation;
             tmp.Set(tmp.x, tmp.y + 180f, tmp.z, tmp.w);
             timer = 0;
-        }
+        }*/
     }
 
     public void CatchChicken()
