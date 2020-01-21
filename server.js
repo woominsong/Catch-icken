@@ -234,14 +234,93 @@ MongoClient.connect(url, { useUnifiedTopology: true }, function (err, client) {
                 }
             });
 
-            socket.on('move', function (data) {
-                console.log("Game " + data.game_id + ": player " + data.playerId + " moved by (" + data.x + "," + data.y + "," + data.z + ") and rotated by (0," + data.ry + ",0)");
+            socket.on('spawn_chickens', function (data) {
+                console.log("Game " + data.game_id + ": spawn chickens");
                 for (i = 0; i < gamerooms.length; i++) {
                     if (gamerooms[i].game_id.toString() === data.game_id) {
                         players = gamerooms[i].players;
                         for (j = 0; j < players.length; j++) {
-                            console.log('emit move to player ' + players[j]);
+                            console.log('emit spawn_chicken to player ' + players[j]);
+                            io.to(clients[ids.indexOf(players[j])]).emit('spawn_chickens', data);
+                        }
+                    }
+                }
+            });
+
+            socket.on('move', function (data) {
+                //console.log("Game "+data.game_id+": player "+data.playerId+" moved by ("+data.x+","+data.y+","+data.z+") and rotated by (0,"+data.ry+",0)");
+                for (i = 0; i < gamerooms.length; i++) {
+                    if (gamerooms[i].game_id.toString() === data.game_id) {
+                        players = gamerooms[i].players;
+                        for (j = 0; j < players.length; j++) {
+                            //console.log('emit move to player '+players[j]);
                             io.to(clients[ids.indexOf(players[j])]).emit('move', data);
+                        }
+                    }
+                }
+            });
+
+            socket.on('fix_position', function (data) {
+                //console.log("Game "+data.game_id+": player "+data.playerId+" is in position ("+data.x+","+data.y+","+data.z+")"+" and EulerAngle (0,"+data.ry+",0)");
+                for (i = 0; i < gamerooms.length; i++) {
+                    if (gamerooms[i].game_id.toString() === data.game_id) {
+                        players = gamerooms[i].players;
+                        for (j = 0; j < players.length; j++) {
+                            //console.log('emit player_idle to player '+players[j]);
+                            io.to(clients[ids.indexOf(players[j])]).emit('fix_position', data);
+                        }
+                    }
+                }
+            });
+
+            socket.on('attack', function (data) {
+                console.log("Game " + data.game_id + ": player " + data.playerId + " attacked.");
+                console.log("" + data.x + " " + data.y + " " + data.z + " " + data.vx + " " + data.vy + " " + data.vz);
+                for (i = 0; i < gamerooms.length; i++) {
+                    if (gamerooms[i].game_id.toString() === data.game_id) {
+                        players = gamerooms[i].players;
+                        for (j = 0; j < players.length; j++) {
+                            console.log('emit attack to player ' + players[j]);
+                            io.to(clients[ids.indexOf(players[j])]).emit('attack', data);
+                        }
+                    }
+                }
+            });
+
+            socket.on('catch', function (data) {
+                console.log("Game " + data.game_id + ": player " + data.playerId + " catched.");
+                for (i = 0; i < gamerooms.length; i++) {
+                    if (gamerooms[i].game_id.toString() === data.game_id) {
+                        players = gamerooms[i].players;
+                        for (j = 0; j < players.length; j++) {
+                            console.log('emit catch to player ' + players[j]);
+                            io.to(clients[ids.indexOf(players[j])]).emit('catch', data);
+                        }
+                    }
+                }
+            });
+
+            socket.on('player_walk', function (data) {
+                console.log("Game " + data.game_id + ": player " + data.playerId + " started to walk.");
+                for (i = 0; i < gamerooms.length; i++) {
+                    if (gamerooms[i].game_id.toString() === data.game_id) {
+                        players = gamerooms[i].players;
+                        for (j = 0; j < players.length; j++) {
+                            console.log('emit player_walk to player ' + players[j]);
+                            io.to(clients[ids.indexOf(players[j])]).emit('player_walk', data);
+                        }
+                    }
+                }
+            });
+
+            socket.on('player_idle', function (data) {
+                console.log("Game " + data.game_id + ": player " + data.playerId + " went idle.");
+                for (i = 0; i < gamerooms.length; i++) {
+                    if (gamerooms[i].game_id.toString() === data.game_id) {
+                        players = gamerooms[i].players;
+                        for (j = 0; j < players.length; j++) {
+                            console.log('emit player_idle to player ' + players[j]);
+                            io.to(clients[ids.indexOf(players[j])]).emit('player_idle', data);
                         }
                     }
                 }

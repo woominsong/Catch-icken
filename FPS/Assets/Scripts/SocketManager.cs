@@ -87,25 +87,29 @@ public class SocketManager : MonoBehaviour
                     break;
                 }
             }
-            //Debug.Log("attack1");
             Vector3 pos = new Vector3(float.Parse(data["x"].CreateString().Trim(trim)), float.Parse(data["y"].CreateString().Trim(trim)), float.Parse(data["z"].CreateString().Trim(trim)));
-            //Debug.Log(data["vx"]);
-            //Debug.Log(data["vx"].CreateString());
-            //Debug.Log(data["vx"].CreateString().Trim(trim));
-            //Debug.Log(float.Parse(data["vx"].CreateString().Trim(trim)));
             Vector3 v = new Vector3(float.Parse(data["vx"].CreateString().Trim(trim)), float.Parse(data["vy"].CreateString().Trim(trim)), float.Parse(data["vz"].CreateString().Trim(trim)));
-            //Debug.Log("attack3");
-            //Debug.Log("attack at ("+pos.x+","+pos.y+","+pos.z+ ") with velocity (" + v.x + "," + v.y + "," + v.z + ")");
+            
             attackOrCatch.ShootAttack(pos, v);
         });
 
         socket.On("catch", (SocketIOEvent e) => {
             Debug.Log("catch");
             var data = JSON.ParseString(e.data.ToString());
+            var om = GetComponentsInChildren<OpponentMove>();
+            int pid = int.Parse(data["playerId"].CreateString().Trim(trim));
+            for (int i = 0; i < om.Length; i++)
+            {
+                //Debug.Log("move5");
+                if (om[i].playerId == pid)
+                {
+                    om[i].oppAttack();
+                    break;
+                }
+            }
             Vector3 pos = new Vector3(float.Parse(data["x"].CreateString().Trim(trim)), float.Parse(data["y"].CreateString().Trim(trim)), float.Parse(data["z"].CreateString().Trim(trim)));
             Vector3 v = new Vector3(float.Parse(data["vx"].CreateString().Trim(trim)), float.Parse(data["vy"].CreateString().Trim(trim)), float.Parse(data["vz"].CreateString().Trim(trim)));
-            int pid = int.Parse(data["playerId"].CreateString().Trim(trim));
-            Debug.Log("Player "+pid+" attack at (" + pos.x + "," + pos.y + "," + pos.z + ") with velocity (" + v.x + "," + v.y + "," + v.z + ")");
+
             attackOrCatch.ShootCatch(pos, v, pid);
         });
 
@@ -141,6 +145,35 @@ public class SocketManager : MonoBehaviour
                 }
             }
 
+        });
+
+        socket.On("spawn_chickens", (SocketIOEvent e) => {
+            Debug.Log("spawn_chickens");
+            var data = JSON.ParseString(e.data.ToString());
+            var cs = GetComponent<ChickenSpawner>();
+            int pId = int.Parse(data["playerId"].CreateString().Trim(trim));
+
+            Debug.Log("spawn_chickens 1");
+            ArrayList x = (ArrayList)MyUtil.StringToObject(data["x"].CreateString().Trim(trim));
+            Debug.Log("spawn_chickens 2");
+            ArrayList z = (ArrayList)MyUtil.StringToObject(data["z"].CreateString().Trim(trim));
+            Debug.Log("spawn_chickens 3");
+            ArrayList ry = (ArrayList)MyUtil.StringToObject(data["ry"].CreateString().Trim(trim));
+            Debug.Log("spawn_chickens 4");
+            ArrayList cid = (ArrayList)MyUtil.StringToObject(data["cid"].CreateString().Trim(trim));
+            Debug.Log("spawn_chickens 5");
+
+            Debug.Log(x.Count);
+
+            for (int i=0; i<x.Count; i++)
+            {
+                Debug.Log("create:");
+                Debug.Log((float)x[i]);
+                Debug.Log((float)z[i]);
+                Debug.Log((int)ry[i]);
+                Debug.Log((int)cid[i]);
+                cs.CreateChicken((float)x[i], (float)z[i], (int)ry[i], (int)cid[i]);
+            }
         });
     }
 

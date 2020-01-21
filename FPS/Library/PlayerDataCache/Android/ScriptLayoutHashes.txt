@@ -128,7 +128,7 @@ ad9173d3a69d99153f38ed4b62226129 UnityEngine.Networking.dll:UnityEngine.Networki
 5887ef1bc706b22b773d253fd443ceef UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformVisualizer
 d251bf88db6c95a6b1aa0b69298da9ef UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
 566d8ff59382ff967a94f538ff05204f Assembly-CSharp.dll:.EffectCatchBall
-7cdad815f3e200b402a710ba24ce38f2 Assembly-CSharp.dll:.PlayerMove
+8476c22d90f52fe65035d0a9819c4177 Assembly-CSharp.dll:.PlayerMove
 303ad70ce203ad874efe2965d0fbcff9 Unity.Analytics.Tracker.dll:UnityEngine.Analytics.AnalyticsEventTracker
 7fb9de8dcf73854b6b328eca1f7a6e6d Unity.Analytics.Tracker.dll:UnityEngine.Analytics.AnalyticsTracker
 b8a5e8091ab0b8861d2add371082c5e0 Unity.TextMeshPro.dll:TMPro.TMP_SpriteAsset
@@ -209,7 +209,7 @@ b3ab2106268377ffe25dd18ac23dca28 Unity.TextMeshPro.dll:TMPro.TMP_Asset
 18276cee0543fd305cd00ff5a56aec86 Assembly-CSharp.dll:SocketIO.SocketIOComponent
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.AttackResult
 4fd8bf02e3089425d3502e26c44ba31a Unity.TextMeshPro.dll:TMPro.TextContainer
-0bb67b5613b72f24356eb812cb8802e1 Assembly-CSharp.dll:.ChickenSpawner
+d0be66829e1c5badc6ca24d6a6f79ac4 Assembly-CSharp.dll:.ChickenSpawner
 e6ae40841db498b6e673877ac45ad208 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
 71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.Networking.dll:UnityEngine.Networking.NetworkBehaviour
 1dcb82730d983b77cec736c6ef19f814 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkDiscovery
@@ -259,6 +259,7 @@ df434544c9f7b33d1cc7e635b180d279 Unity.TextMeshPro.dll:TMPro.TextMeshPro
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:Leguar.TotalJSON.Examples.CreateAndModifyJSON
 3165968ba45c74472d279ba04455fccb Unity.TextMeshPro.dll:TMPro.TMP_ColorGradient
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.AttackOrCatch
+71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.MyUtil
 8649814970b42d345b89944b862453cc Unity.TextMeshPro.dll:TMPro.TMP_SubMesh
 0077fc8e4fbae67f80e80ebd534de5a0 Vuforia.UnityExtensions.dll:Vuforia.AnchorBehaviour
 ff1cfd768b207053e073f8002f937b81 Vuforia.UnityExtensions.dll:Vuforia.AnchorInputListenerBehaviour

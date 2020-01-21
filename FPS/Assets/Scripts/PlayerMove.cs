@@ -73,7 +73,6 @@ public class PlayerMove : MonoBehaviour{
     public int lineSegment;
 
     //socket
-    [SerializeField]
     private SocketIOComponent socket;
     
     //for Energy
@@ -147,6 +146,12 @@ public class PlayerMove : MonoBehaviour{
             if (int.Parse(data["ready"].CreateString().Trim(trim)) == 2)
             {
                 playersReady = true;
+                if (playerId == 1)
+                {
+                    Debug.Log("game_ready: 'if' entered");
+                    var cs = FindObjectOfType<ChickenSpawner>();
+                    cs.SpawnChickens();
+                }
             }
         });
     }
