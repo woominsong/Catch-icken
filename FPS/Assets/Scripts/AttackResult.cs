@@ -50,7 +50,7 @@ public class AttackResult : MonoBehaviour
         if(other.tag == "Container")
         {
             Debug.Log("My Container is Hit");
-            if(other.GetComponentInChildren<ContanerId>().contanerId == FindObjectOfType<PlayerMove>().playerId)
+            if(other.GetComponentInChildren<ContanerId>().containerId == FindObjectOfType<PlayerMove>().playerId)
             {
                 other.GetComponentInChildren<Slider>().value -= 0.2f;
 

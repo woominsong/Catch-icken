@@ -53,14 +53,13 @@ public class ChickenSpawner : MonoBehaviour
 
     public void SpawnChickens()
     {
-        var needChickenNum = numberOfChicken - currentNumberOfChicken;
+        var needChickenNum = maxNumberOfChicken - currentNumberOfChicken;
 
         ArrayList x = new ArrayList();
         ArrayList z = new ArrayList();
         ArrayList ry = new ArrayList();
         ArrayList cid = new ArrayList();
 
-        var needChickenNum = maxNumberOfChicken - currentNumberOfChicken;
         for (int i = 0; i < needChickenNum / 2; i++)
         {
             x.Add(Random.Range(-71f, -28f));

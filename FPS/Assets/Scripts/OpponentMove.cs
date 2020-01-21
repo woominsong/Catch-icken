@@ -6,9 +6,9 @@ using UnityEngine.UI;
 
 public class OpponentMove : MonoBehaviour
 {
-    [SerializeField]
     public int playerId;
     public int playerRecord;
+    public int game_id;
 
     // Player move variables.
     private CharacterController cc; // Reference to attached CharacterController.
@@ -87,9 +87,10 @@ public class OpponentMove : MonoBehaviour
         m_attack.ShootAttack(shootStartPoint, shootVelocity);
     }
 
-    public void oppMove(Vector3 displacement)
+    public void oppMove(Vector3 displacement, float ry)
     {
         cc.Move(displacement);
+        transform.eulerAngles += new Vector3(0, ry, 0);
     }
 
     public void oppHit()

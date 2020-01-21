@@ -3267,7 +3267,7 @@ MonoBehaviour:
   playerId: 0
   chickenPrefab: {fileID: 1311290861401530, guid: 312b31977ed9b2d48a14849ebb8c7fb3,
     type: 3}
-  numberOfChicken: 20
+  maxNumberOfChicken: 20
   currentNumberOfChicken: 0
 --- !u!1 &542355108
 GameObject:
@@ -7713,53 +7713,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1317634459}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1332842278
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1332842280}
-  - component: {fileID: 1332842279}
-  m_Layer: 0
-  m_Name: ChickenSpawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1332842279
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1332842278}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a844f8c8e44704144897e15fd9cee1a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chickenPrefab: {fileID: 1311290861401530, guid: 312b31977ed9b2d48a14849ebb8c7fb3,
-    type: 3}
-  maxNumberOfChicken: 20
-  currentNumberOfChicken: 0
---- !u!4 &1332842280
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1332842278}
-  m_LocalRotation: {x: -0.10349679, y: -0.9879304, z: 0.007604394, w: -0.114996254}
-  m_LocalPosition: {x: 2.3213081, y: -0.32475662, z: -73.2475}
-  m_LocalScale: {x: 0.5000005, y: 0.49999994, z: 0.5992732}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1354867939
 GameObject:
   m_ObjectHideFlags: 0
