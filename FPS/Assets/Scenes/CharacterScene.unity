@@ -2765,7 +2765,7 @@ Transform:
   - {fileID: 1368011231}
   - {fileID: 1317634460}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: -57.478004, z: 0}
 --- !u!1 &423052146 stripped
 GameObject:
@@ -3307,7 +3307,7 @@ Transform:
   - {fileID: 345290746}
   - {fileID: 1514969626}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &529788900
 MonoBehaviour:
@@ -3352,7 +3352,7 @@ MonoBehaviour:
   playerId: 0
   chickenPrefab: {fileID: 1311290861401530, guid: 312b31977ed9b2d48a14849ebb8c7fb3,
     type: 3}
-  maxNumberOfChicken: 20
+  maxNumberOfChicken: 15
   currentNumberOfChicken: 0
   chickenControllers: []
 --- !u!1 &542355108
@@ -3458,7 +3458,7 @@ Transform:
   m_LocalScale: {x: 10, y: 1, z: 15}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 90, y: 57.111, z: 0}
 --- !u!64 &562286725
 MeshCollider:
@@ -4137,7 +4137,7 @@ RectTransform:
   - {fileID: 1316789177}
   - {fileID: 1442372272}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -9631,7 +9631,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1634043712
 PrefabInstance:
@@ -9840,7 +9840,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1649976527
 GameObject:
@@ -9871,7 +9871,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1649976529
 MonoBehaviour:
@@ -10525,7 +10525,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1001 &1716686618
 PrefabInstance:
@@ -10910,7 +10910,7 @@ Transform:
   m_LocalScale: {x: 10, y: 1, z: 15}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 90, y: -32.889, z: 0}
 --- !u!64 &1757055942
 MeshCollider:
@@ -11659,7 +11659,7 @@ Transform:
   m_LocalScale: {x: 10, y: 1, z: 15}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 90, y: 237.111, z: 0}
 --- !u!64 &1888258482
 MeshCollider:
@@ -12736,7 +12736,7 @@ Transform:
   m_LocalScale: {x: 10, y: 1, z: 15}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 90, y: 147.111, z: 0}
 --- !u!64 &2121366744
 MeshCollider:
@@ -13119,7 +13119,7 @@ PrefabInstance:
     - target: {fileID: 2505820549046547707, guid: ccdedc0801ef31a49a6d28008ebcd1c4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2505820549046547707, guid: ccdedc0801ef31a49a6d28008ebcd1c4,
         type: 3}
@@ -13183,13 +13183,18 @@ PrefabInstance:
     - target: {fileID: 6538446725723531144, guid: 9befe3cb39725cf439942b3cd4d7156f,
         type: 3}
       propertyPath: TimerSeconds
-      value: 150
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 6538446725723531144, guid: 9befe3cb39725cf439942b3cd4d7156f,
         type: 3}
       propertyPath: material
       value: 
       objectReference: {fileID: 2100000, guid: 943ab1d86a62bcd42a30dabf12ec5bdc, type: 2}
+    - target: {fileID: 6538446725723531144, guid: 9befe3cb39725cf439942b3cd4d7156f,
+        type: 3}
+      propertyPath: audio
+      value: 
+      objectReference: {fileID: 1649976529}
     - target: {fileID: 6538446725723531147, guid: 9befe3cb39725cf439942b3cd4d7156f,
         type: 3}
       propertyPath: m_LocalPosition.x

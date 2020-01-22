@@ -171,7 +171,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 4109bf1c22a80cb42b3ba62fa88d93b6, type: 2}
+      objectReference: {fileID: 9100000, guid: 7d4131b33591d44408bed73e7a081d39, type: 2}
     - target: {fileID: 137702289541837672, guid: 55776efecb0cd134ea5f418c2f97a705,
         type: 3}
       propertyPath: m_Enabled
@@ -247,7 +247,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 4109bf1c22a80cb42b3ba62fa88d93b6, type: 2}
+      objectReference: {fileID: 9100000, guid: 7d4131b33591d44408bed73e7a081d39, type: 2}
     - target: {fileID: 137702289541837672, guid: 55776efecb0cd134ea5f418c2f97a705,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

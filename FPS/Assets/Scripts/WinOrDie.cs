@@ -17,6 +17,8 @@ public class WinOrDie : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Corridor_Music.Instance.gameObject.GetComponent<AudioSource>().Play();
+
         playerId = PlayerPrefs.GetInt("playerId");
         game_id = PlayerPrefs.GetInt("game_id");
 

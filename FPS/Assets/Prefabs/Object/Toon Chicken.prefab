@@ -332,7 +332,7 @@ Animator:
   m_GameObject: {fileID: 1311290861401530}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: d623cd35a78380d4eb0457c4e483abed, type: 3}
-  m_Controller: {fileID: 9100000, guid: 84dd067921f4e0045bb3a9a6e8fb7789, type: 2}
+  m_Controller: {fileID: 9100000, guid: eca2e45a85409424ca6f0637198a9cc1, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -355,11 +355,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chickenId: 0
   chickenLive: 0
-  timer: 0
   newTarget: 3
-  speed: 5
-  nav: {fileID: 195109815628856716}
-  Target: {x: 0, y: 0, z: 0}
 --- !u!143 &143498028023782522
 CharacterController:
   m_ObjectHideFlags: 0
